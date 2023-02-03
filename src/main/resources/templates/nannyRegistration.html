@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat App - Register</title>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Chat App</h1>
+    <nav>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+      <a href="/sitters profile">Profile</a>
+      <a href="/parents profile">Group Chat</a>
+      <a href="/users">All Users</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <form action="/register" method="post">
+    <div>
+      <label>Full Name</label>
+      <input type=text" name="fullName" required>
+    </div>
+
+    <div>
+      <label>Username</label>
+      <input type=text" name="username" minlength="4" required>
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+    <div>
+      <label>Password</label>
+      <input type="password" name="password" required>
+    </div>
+    <div>
+      <label>Location</label>
+      <input type="text" name="Location" required>
+    </div>
+    <div>
+      <label>Chat color</label>
+      <input type="color" name="chatColor" required>
+    </div>
+    <div>
+      <label>Date of birth</label>
+      <input type="date" name="dateOfBirth" required>
+    </div>
+    <div>
+      <label>Profile picture url</label>
+      <input type="url" name="profilePictureUrl" required>
+    </div>
+
+    <div>
+      <button>Create Account</button>
+    </div>
+  </form>
+</main>
+
+</body>
+</html>tml>
