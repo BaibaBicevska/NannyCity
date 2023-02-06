@@ -1,0 +1,77 @@
+
+.main__about__cardio {
+    position: relative;
+    background-color: #F9C8CC;
+    height: 100%;
+}
+
+.main__logo {
+    }
+
+.header__links {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.header__nav {
+    padding-top: 35px;
+    padding-bottom: 18px;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    font-size: 17px;
+    line-height: 18px;
+}
+
+.section__left {
+    background-repeat: no-repeat;
+    background-size: cover;
+   height: 900px;
+    background-image: url("./images/header_left.png");
+}
+
+.left {
+    background-color: #F9C8CC;
+}
+
+.section__right {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 900px;
+    background-image: url("./images/header_right.png") ;
+}
+
+.section__all {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+}
+
+.text__become {
+    padding-top: 150px;
+    padding-left: 150px;
+    color: white;
+    font-family: Inter;
+    font-size: 40px;
+}
+
+.text__find {
+    padding-top: 150px;
+    padding-left: 550px;
+    color: white;
+    font-family: Inter;
+    font-size: 40px;
+}
+
+.button_find {
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.button_find_link {
+    text-decoration: none;
+}
+
+
