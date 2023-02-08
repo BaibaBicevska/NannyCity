@@ -1,63 +1,236 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=http://www.thymeleaf.org">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Chat App - Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    .btn {
+      background-color: #F9C8CC !important;
+    }
+    .modal-header, h4, .close {
+      background-color: #F9C8CC;
+      text-align: center;
+      font-size: 30px;
+      color: #fff !important;
+    }
+    .modal-footer {
+      background-color: #F9C8CC;
+    }
+    .checkboxes_registration {
+      display: flex;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div>
-    <nav>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-      <a href="/sitters profile">Profile</a>
-      <a href="/parents profile">Group Chat</a>
-      <a href="/users">All Users</a>
-    </nav>
+
+<div class="container">
+  <h2>Do you want to register?</h2>
+  <button type="button" class="btn btn-default btn-lg" id="Btn1">Registration</button>
+
+  <div class="modal fade" id="Modal1" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Registration</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="firstName"><span class="glyphicon glyphicon-user"></span> First name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="First name">
+            </div>
+            <div class="form-group">
+              <label for="lastName"><span class="glyphicon glyphicon-user"></span> Last name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Last name">
+            </div>
+            <div class="form-group">
+              <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password" class="form-control" id="psw1" placeholder="Enter password">
+              <br/>
+              <input type="password" class="form-control" id="psw2" placeholder="Enter password again">
+            </div>
+            <div class="form-group">
+              <label for="birthDate"><span class="glyphicon glyphicon-calendar"></span> Birth date</label>
+              <input type="date" class="form-control" id="birthDate">
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber"><span class="glyphicon glyphicon-phone-alt"></span> Phone number</label>
+              <input type="number" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+              <label for="location"><span class="glyphicon glyphicon-location"></span> Location</label>
+              <input type="text" class="form-control" id="location" placeholder="Enter your location">
+            </div>
+            <div class="form-group">
+              <label for="address"><span class="glyphicon glyphicon-home"></span> Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Enter your address">
+            </div>
+            <div class="form-group">
+              <label for="photo"><span class="glyphicon glyphicon-picture"></span> Load your photo</label>
+              <input type="#" class="form-control" id="photo" placeholder="Load your photo">
+            </div>
+
+            <div class="checkboxes_registration">
+              <h5 style="margin-right:20px;">Working hours</h5>
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="hours1">
+                  <label class="form-check-label" for="check1">
+                    Full-time
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="hours2">
+                  <label class="form-check-label" for="check2">
+                    Night hours
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="hours3">
+                  <label class="form-check-label" for="check3">
+                    Evening hours
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="hours4">
+                  <label class="form-check-label" for="check4">
+                    Day hours
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkboxes_registration">
+              <h5 style="margin-right:20px;">Additional skills</h5>
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="check1">
+                  <label class="form-check-label" for="check1">
+                    Driving
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="check2">
+                  <label class="form-check-label" for="check2">
+                    Cooking
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="check3">
+                  <label class="form-check-label" for="check3">
+                    House cleaning
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="check4">
+                  <label class="form-check-label" for="check4">
+                    Ironing
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="check5">
+                  <label class="form-check-label" for="check5">
+                    House cleaning
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="check6">
+                  <label class="form-check-label" for="check6">
+                    Shopping
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="education"><span class="glyphicon glyphicon-education"></span> Education </label>
+              <input type="text" class="form-control" id="education" placeholder="Enter your education and certificates">
+            </div>
+
+            <div class="form-group">
+              <label for="experience"><span class="glyphicon glyphicon-certificate"></span> Experience </label>
+              <input type="text" class="form-control" id="experience" placeholder="Enter your experience">
+            </div>
+
+            <div class="checkboxes_registration">
+              <h5 style="margin-right:20px;">What languages do you speak? </h5>
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="language1">
+                  <label class="form-check-label" for="check1">
+                    English
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="language2">
+                  <label class="form-check-label" for="check2">
+                    Latvian
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="language3">
+                  <label class="form-check-label" for="check3">
+                    Lithuanian
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="language4">
+                  <label class="form-check-label" for="check4">
+                    Russian
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="language5">
+                  <label class="form-check-label" for="check5">
+                    German
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="language6">
+                  <label class="form-check-label" for="check6">
+                    other
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description"><span class="glyphicon glyphicon-picture"></span> Description </label>
+              <textarea type="comment" class="form-control" id="description" placeholder="Enter information about you"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block" ><span class="glyphicon glyphicon-off"></span> Register</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Do you have an account? <a href="../templates/login.html">Log in</a></p>
+        </div>
+      </div>
+    </div>
   </div>
-</header>
+</div>
 
-<main>
-  <form action="/register" method="post">
-    <div>
-      <label>Full Name</label>
-      <input type=text" name="fullName" required>
-    </div>
-
-    <div>
-      <label>Username</label>
-      <input type=text" name="username" minlength="4" required>
-    </div>
-    <div>
-      <label>Email</label>
-      <input type="email" name="email" required>
-    </div>
-    <div>
-      <label>Password</label>
-      <input type="password" name="password" required>
-    </div>
-    <div>
-      <label>Location</label>
-      <input type="text" name="Location" required>
-    </div>
-    <div>
-      <label>Chat color</label>
-      <input type="color" name="chatColor" required>
-    </div>
-    <div>
-      <label>Date of birth</label>
-      <input type="date" name="dateOfBirth" required>
-    </div>
-    <div>
-      <label>Profile picture url</label>
-      <input type="url" name="profilePictureUrl" required>
-    </div>
-
-    <div>
-      <button>Create Account</button>
-    </div>
-  </form>
-</main>
+<script>
+  $(document).ready(function(){
+    $("#Btn1").click(function(){
+      $("#Modal1").modal();
+    });
+  });
+</script>
 
 </body>
-</html>tml>
+</html>

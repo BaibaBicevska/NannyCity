@@ -1,11 +1,7 @@
 
-.main__about__cardio {
-    position: relative;
-    background-color: #F9C8CC;
-    height: 100%;
-}
-
 .main__logo {
+    padding-left: 900px;
+
     }
 
 .header__links {
@@ -54,6 +50,7 @@
     color: white;
     font-family: Inter;
     font-size: 40px;
+    font-weight: bolder;
 }
 
 .text__find {
@@ -62,16 +59,27 @@
     color: white;
     font-family: Inter;
     font-size: 40px;
+    font-weight: bolder;
 }
 
-.button_find {
+.button_find_nanny {
+    font-size: 20px;
     padding: 10px;
     border-radius: 10px;
-
+    margin-left: 700px;
+    margin-top: 300px;
 }
 
 .button_find_link {
     text-decoration: none;
+}
+
+.button_find_parent {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 200px;
+    margin-top: 300px;
 }
 
 
