@@ -1,4 +1,4 @@
-
+package com.nannycity.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Data
 @Entity
-public class User {
+public class ParentUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

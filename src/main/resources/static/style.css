@@ -2,7 +2,7 @@
 .main__logo {
     padding-left: 900px;
 
-    }
+}
 
 .header__links {
     color: white;
@@ -23,7 +23,7 @@
 .section__left {
     background-repeat: no-repeat;
     background-size: cover;
-   height: 900px;
+    height: 900px;
     background-image: url("./images/header_left.png");
 }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Nannies city</title>
@@ -10,29 +10,34 @@
 <main class="main__about">
   <section class="section__all">
     <div class="left">
+      <!--<header th:insert="~{/fragments/header.html :: header}"></header>-->
       <div>
         <nav class="header__nav">
-          <a href="/index.html" class="header__links">Main menu</a>
+          <a href="/" class="header__links">Main menu</a>
           <a href="/" class="header__links">Our services</a>
-          <a href="/" class="header__links">Nannies</a>
+          <a href="/allNannies" class="header__links">Nannies</a>
           <a href="/" class="header__links">FAQ</a>
-          <a href="/templates/login.html" class="header__links">Log in for nannies</a>
+          <a href="login" class="header__links">Log in for nannies</a>
           <a href="" class="header__links">Log in for parents</a>
         </nav>
       </div>
       <div>
         <div class="section__left">
-        <h1 class="text__find">FIND A NANNY</h1>
-          <button type="button" class="btn btn-light button_find_nanny"><a href="/templates/nannyRegistration.html" class="button_find_link">Find child care</a></button>
-      </div>
+          <h1 class="text__find">FIND A NANNY</h1>
+          <button type="button" class="btn btn-light button_find_nanny"><a href="/nannyRegistration"
+                                                                           class="button_find_link">Find child
+            care</a></button>
+        </div>
       </div>
     </div>
     <div>
-    <img class="main__logo" src="images/logo.png" alt="Logo">
-    <div class="section__right">
-      <h1 class="text__become">BECOME A NANNY</a></h1>
-      <button type="button" class="btn btn-light button_find_parent"><a href="/templates/parentsRegistration.html" class="button_find_link">I am a nanny</a></button>
-    </div>
+      <img class="main__logo" src="images/logo.png" alt="Logo">
+      <div class="section__right">
+        <h1 class="text__become">BECOME A NANNY</a></h1>
+        <button type="button" class="btn btn-light button_find_parent"><a href="/parentsRegistration"
+                                                                          class="button_find_link">I am a
+          nanny</a></button>
+      </div>
     </div>
   </section>
 </main>
