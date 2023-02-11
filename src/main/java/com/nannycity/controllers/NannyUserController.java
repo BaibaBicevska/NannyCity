@@ -10,12 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Optional;
-
 @Controller
-public class UserController {
+public class NannyUserController {
     @Autowired
     private NannyRepository nannyRepository;
 
@@ -48,7 +44,6 @@ public class UserController {
 
         return "parentsRegistration";
     }
-
 
     @PostMapping("/nannyRegistration")
     public String addNanny(

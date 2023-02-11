@@ -21,16 +21,17 @@
     .checkboxes_registration {
       display: flex;
     }
+    .container {
+      width: 700px;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>Do you want to register?</h2>
-  <button type="button" class="btn btn-default btn-lg" id="Btn1">Registration</button>
 
-  <div class="modal fade" id="Modal1" role="dialog">
-    <div class="modal-dialog">
+  <!--<div class="modal fade" id="Modal1" role="dialog">
+    <div class="modal-dialog">-->
 
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;">
@@ -150,12 +151,12 @@
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Do you have an account? <a href="../templates/login.html">Log in</a></p>
+          <p>Do you have an account? <a href="login.html">Log in</a></p>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  <!--</div>
+</div>-->
 
 <script>
   $(document).ready(function(){
