@@ -12,37 +12,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class NannyUserController {
-    @Autowired
-    private NannyRepository nannyRepository;
-
-    @GetMapping("nannyRegistration/add")
-    public String showNannie(Model model) {
-        Iterable<NannyUser> nannies = nannyRepository.findAll();
-        model.addAttribute("nannies", nannies);
-        return "redirect:/login";
-    }
-
-    /*@GetMapping("/allNannies")
-    public String showAllNanniesPage(){
-
-        return "allNannies";
-    }*/
 
     @GetMapping("/login")
-    public String showLoginPage(){
-
+    public String showNannieLogin(Model model) {
         return "login";
     }
+
     @GetMapping("/nannyRegistration")
     public String showNannyRegistrationPage(){
-
         return "nannyRegistration";
     }
 
-    @GetMapping("/parentsRegistration")
-    public String showParentsRegistrationPage(){
+    @Autowired
+    private NannyRepository nannyRepository;
 
-        return "parentsRegistration";
+    @GetMapping("allNannies")
+    public String showNannie(Model model) {
+        Iterable<NannyUser> nannies = nannyRepository.findAll();
+        model.addAttribute("nannies", nannies);
+        return "allNannies";
     }
 
     @PostMapping("/nannyRegistration")
@@ -69,6 +57,17 @@ public class NannyUserController {
         return "login";
     }
 
+    @GetMapping("nanniesAdmin")
+    public String showNanniesAdmin(Model model) {
+        Iterable<NannyUser> nannies = nannyRepository.findAll();
+        model.addAttribute("nannies", nannies);
+        return "nanniesAdmin";
+    }
+
+  @GetMapping("/nannyProfile")
+    public String showNannyProfile () {
+        return "nannyProfile";
+    }
 
 }
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<table class="table table-bordered table-dark">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">First name</th>
+    <th scope="col">Second Name</th>
+    <th scope="col">email</th>
+    <th scope="col">Password</th>
+    <th scope="col">BirthDay</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Address</th>
+    <th scope="col">Location</th>
+    <th scope="col">Working hours</th>
+    <th scope="col">Skills</th>
+    <th scope="col">Education</th>
+    <th scope="col">Experience</th>
+    <th scope="col">Language</th>
+    <th scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="el : ${nannies}">
+    <th scope="row">1</th>
+    <td th:text="${el.userName}"/>
+    <td th:text="${el.userSecondName}"/>
+    <td th:text="${el.email}"/>
+    <td th:text="${el.password}"/>
+    <td th:text="${el.birthDay}"/>
+    <td th:text="${el.phone}"/>
+    <td th:text="${el.address}"/>
+    <td th:text="${el.location}"/>
+    <td th:text="${el.hours}"/>
+    <td th:checked="${el.skills}"/>
+    <td th:text="${el.education}"/>
+    <td th:text="${el.experience}"/>
+    <td th:text="${el.language}"/>
+    <td th:text="${el.description}"/>
+
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
