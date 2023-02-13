@@ -3,6 +3,9 @@ package com.nannycity.controllers;
 
 import com.nannycity.entities.NannyUser;
 import com.nannycity.repositories.NannyRepository;
+import com.nannycity.services.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +16,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class NannyUserController {
 
+    @Autowired
+    public NannyUserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/login")
-    public String showNannieLogin(Model model) {
+    public String showNannieLogin(
+            @RequestParam(name="message", required = false) String message,
+            Model model) {
+        model.addAttribute("message", message);
         return "login";
+    }
+
+    @PostMapping("/login")
+    public String handleNannyLogin(NannyUser nannyUser, HttpServletResponse response) {
+        try {
+            NannyUser loggedInUser = userService.verifyUser(nannyUser);
+            Cookie cookie = new Cookie("userId", loggedInUser.getId().toString());
+            response.addCookie(cookie);
+            response.addCookie(new Cookie("userIsLoggedIn", "true"));
+            return "redirect:nannyProfile"/* + loggedInUser.getId()*/;
+        } catch (Exception e) {
+            return "redirect:login?message=login_failed&error=" + e.getMessage();
+        }
     }
 
     @GetMapping("/nannyRegistration")
@@ -68,6 +92,9 @@ public class NannyUserController {
     public String showNannyProfile () {
         return "nannyProfile";
     }
+
+    private final UserService userService;
+
 
 }
 
