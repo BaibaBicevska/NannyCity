@@ -60,93 +60,23 @@
 <body>
 <header th:insert="~{fragment/header.html :: header}"></header>
 
-<div class="row" th:each="el : ${nannies}">
-<div class="col-lg-3 nanny_card">
+<div class="col-lg-4" th:each="el : ${nannies}">
+<div class="nanny_card">
     <div class="card shadow-sm">
         <div class="card-header bg-transparent text-center">
             <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
             <h2 th:text="${el.userName} + ' ' + ${el.userSecondName}"/>
         </div>
+
         <div class="card-body">
-            <p class="mb-0"><strong class="pr-1">Email:</strong></p>
-            <p th:text="${el.email}" class="mb-0"></p>
-            <p class="mb-0"><strong class="pr-1">Birth date:</strong></p>
-            <p th:text="${el.birthDay}" class="mb-0"><strong class="pr-1">Birth date:</strong></p>
-            <p class="mb-0"><strong class="pr-1">Phone number:</strong></p>
-            <p th:text="${el.phone}" class="mb-0"><strong class="pr-1">Phone number:</strong></p>
-            <p class="mb-0"><strong class="pr-1">Location:</strong></p>
-            <p th:text="${el.location}" class="mb-0"><strong class="pr-1">Location:</strong></p>
+            <p><b>Email:</b> <span th:text="${el.email}"/></p>
+            <p><b>Birth date:</b> <span th:text="${el.birthDay}"/></p>
+            <p><b>Phone number:</b> <span th:text="${el.phone}"/></p>
+            <p><b>Location:</b> <span th:text="${el.location}"/></p>
         </div>
     </div>
 </div>
-
-    <!--
-<div class="col-lg-3 nanny_card">
-    <div class="card shadow-sm">
-        <div class="card-header bg-transparent text-center">
-            <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            <h3>Sarah Doe</h3>
-        </div>
-        <div class="card-body">
-            <p class="mb-0"><strong class="pr-1">Email:</strong>sarahdoe@gmail.com</p>
-            <p class="mb-0"><strong class="pr-1">Birth date:</strong>01.01.1980</p>
-            <p class="mb-0"><strong class="pr-1">Phone number:</strong>+371 26252423</p>
-            <p class="mb-0"><strong class="pr-1">Location:</strong>Riga</p>
-            <p class="mb-0"><strong class="pr-1">Address:</strong>Rigas street 5</p>
-        </div>
-    </div>
 </div>
-
-
-<div class="col-lg-3 nanny_card">
-    <div class="card shadow-sm">
-        <div class="card-header bg-transparent text-center">
-            <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            <h3>Sarah Doe</h3>
-        </div>
-        <div class="card-body">
-            <p class="mb-0"><strong class="pr-1">Email:</strong>sarahdoe@gmail.com</p>
-            <p class="mb-0"><strong class="pr-1">Birth date:</strong>01.01.1980</p>
-            <p class="mb-0"><strong class="pr-1">Phone number:</strong>+371 26252423</p>
-            <p class="mb-0"><strong class="pr-1">Location:</strong>Riga</p>
-            <p class="mb-0"><strong class="pr-1">Address:</strong>Rigas street 5</p>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-3 nanny_card">
-    <div class="card shadow-sm">
-        <div class="card-header bg-transparent text-center">
-            <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            <h3>Sarah Doe</h3>
-        </div>
-        <div class="card-body">
-            <p class="mb-0"><strong class="pr-1">Email:</strong>sarahdoe@gmail.com</p>
-            <p class="mb-0"><strong class="pr-1">Birth date:</strong>01.01.1980</p>
-            <p class="mb-0"><strong class="pr-1">Phone number:</strong>+371 26252423</p>
-            <p class="mb-0"><strong class="pr-1">Location:</strong>Riga</p>
-            <p class="mb-0"><strong class="pr-1">Address:</strong>Rigas street 5</p>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-3 nanny_card">
-    <div class="card shadow-sm">
-        <div class="card-header bg-transparent text-center">
-            <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            <h3>Sarah Doe</h3>
-        </div>
-        <div class="card-body">
-            <p class="mb-0"><strong class="pr-1">Email:</strong>sarahdoe@gmail.com</p>
-            <p class="mb-0"><strong class="pr-1">Birth date:</strong>01.01.1980</p>
-            <p class="mb-0"><strong class="pr-1">Phone number:</strong>+371 26252423</p>
-            <p class="mb-0"><strong class="pr-1">Location:</strong>Riga</p>
-            <p class="mb-0"><strong class="pr-1">Address:</strong>Rigas street 5</p>
-        </div>
-    </div>
-</div>
--->
-</div>
-
+<footer th:insert="~{fragment/footer.html :: footer}"></footer>
 </body>
 </html>

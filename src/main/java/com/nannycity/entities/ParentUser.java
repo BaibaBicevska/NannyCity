@@ -24,19 +24,33 @@ public class ParentUser {
     private String email;
     private String password;
 
-
     private String location;
     private String address;
     private String phone;
     private boolean status;
 
-    private String languages;
+    private String language;
 
     private String hours;
+    private String description;
 
 
     @CreationTimestamp
     private Timestamp createdAt;
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    public ParentUser(String userName, String userSecondName, String email, String password, String phone, String location, String address, String hours, String language, String description) {
+
+        this.userName = userName;
+        this.userSecondName = userSecondName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.location = location;
+        this.address = address;
+        this.hours = hours;
+        this.language = language;
+        this.description = description;
+    }
 }
