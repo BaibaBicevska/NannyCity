@@ -50,25 +50,61 @@
       padding: 5px 10px;
       color: #000;
     }
+
+    .h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .header__nav {
+      padding-left: 350px;
+      padding-right: 350px;
+      padding-top: 35px;
+      padding-bottom: 18px;
+      display: flex;
+      justify-content: space-around;
+      align-items:center;
+      font-size: 17px;
+      line-height: 18px;
+    }
+
+    .header__links {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    .buttons {
+      padding-left: 100px;
+    }
+    .btn {
+      padding:15px 70px;
+      margin-right: 20px;
+      margin-top: 20px;
+      background-color: #F9C8CC;
+      color: black;
+    }
+
   </style>
 
 </head>
 <body>
+<header th:insert="~{fragment/header.html :: header}"></header>
+
 <div class="student-profile py-4">
   <div class="container">
-    <div class="row">
+    <div class="row" th:each="el : ${nannyUser}">
       <div class="col-lg-4">
         <div class="card shadow-sm">
           <div class="card-header bg-transparent text-center">
             <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            <h3>Sarah Doe</h3>
+            <h2 th:text="${el.userName} + ' ' + ${el.userSecondName}"/>
           </div>
           <div class="card-body">
-            <p class="mb-0"><strong class="pr-1">Email:</strong>sarahdoe@gmail.com</p>
-            <p class="mb-0"><strong class="pr-1">Birth date:</strong>01.01.1980</p>
-            <p class="mb-0"><strong class="pr-1">Phone number:</strong>+371 26252423</p>
-            <p class="mb-0"><strong class="pr-1">Location:</strong>Riga</p>
-            <p class="mb-0"><strong class="pr-1">Address:</strong>Rigas street 5</p>
+            <p><b>Email:</b> <span th:text="${el.email}"/></p>
+            <p><b>Password:</b> <span th:text="${el.password}"/></p>
+            <p><b>Birth date:</b> <span th:text="${el.birthDay}"/></p>
+            <p><b>Phone number:</b> <span th:text="${el.phone}"/></p>
+            <p><b>Address:</b> <span th:text="${el.address} + ',' + ${el.location}"/></p>
           </div>
         </div>
       </div>
@@ -82,27 +118,27 @@
               <tr>
                 <th width="30%">Education</th>
                 <td width="2%">:</td>
-                <td>Bachelor in economics</td>
+                <td th:text="${el.education}"/>
               </tr>
               <tr>
                 <th width="30%">Experience</th>
                 <td width="2%">:</td>
-                <td>5 years experience</td>
+                <td th:text="${el.experience}"/>
               </tr>
               <tr>
                 <th width="30%">Working hours</th>
                 <td width="2%">:</td>
-                <td>Evening hours, night hours</td>
+                <td th:text="${el.hours}"/>
               </tr>
               <tr>
                 <th width="30%">Additional skills</th>
                 <td width="2%">:</td>
-                <td>Cooking, ironing, house cleaning</td>
+                <td th:text="${el.skills}"/>
               </tr>
               <tr>
                 <th width="30%">Languages</th>
                 <td width="2%">:</td>
-                <td>English</td>
+                <td th:text="${el.language}"/>
               </tr>
             </table>
           </div>
@@ -113,12 +149,18 @@
             <h3 class="mb-0"><i class="far fa-clone pr-1"></i>About me</h3>
           </div>
           <div class="card-body pt-0">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <td th:text="${el.description}"/>
           </div>
         </div>
+        <div class="buttons">
+          <a class="btn btn-primary" href="/nannyRegistration.html" role="button">Update profile</a>
+          <a class="btn btn-primary" href="#" role="button">Delete profile</a>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
+<footer th:insert="~{fragment/footer.html :: footer}"></footer>
 </body>
 </html>
