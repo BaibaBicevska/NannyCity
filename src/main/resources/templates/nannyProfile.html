@@ -97,7 +97,7 @@
         <div class="card shadow-sm">
           <div class="card-header bg-transparent text-center">
             <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            <h2 th:text="${el.userName} + ' ' + ${el.userSecondName}"/>
+            <h2 th:text="${el.userFullName}"/>
           </div>
           <div class="card-body">
             <p><b>Email:</b> <span th:text="${el.email}"/></p>
@@ -153,8 +153,11 @@
           </div>
         </div>
         <div class="buttons">
-          <a class="btn btn-primary" href="/nannyRegistration.html" role="button">Update profile</a>
-          <a class="btn btn-primary" href="#" role="button">Delete profile</a>
+          <a th:href="'/nannyProfile/' + ${el.id} + '/edit'" class="btn btn-primary" role="button">Update profile</a>
+          <form th:action="'/nannyProfile/' + ${id} + '/remove'" method="post">
+            <button class="btn btn-primary" type="submit" >Delete profile</button>
+          </form>
+
         </div>
 
       </div>

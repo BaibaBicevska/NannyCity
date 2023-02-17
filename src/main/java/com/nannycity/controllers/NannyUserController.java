@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static javax.swing.text.html.HTML.Attribute.N;
-
 @Controller
 public class NannyUserController {
+    private final UserService userService;
 
     @Autowired
     public NannyUserController(UserService userService) {
@@ -49,7 +48,7 @@ public class NannyUserController {
     }
 
     @GetMapping("/nannyRegistration")
-    public String showNannyRegistrationPage(){
+    public String showNannyRegistrationPage(NannyUser nannyUser){
         return "nannyRegistration";
     }
 
@@ -66,23 +65,23 @@ public class NannyUserController {
     @PostMapping("/nannyRegistration")
     public String addNanny(
             @RequestParam String userName,
-            @RequestParam String userSecondName,
+            @RequestParam String userFullName,
             @RequestParam String email,
             @RequestParam String password,
             @RequestParam String birthDay,
             @RequestParam String phone,
             @RequestParam String location,
             @RequestParam String address,
-            @RequestParam String hours,
-            @RequestParam String skills,
+            @RequestParam String[] hours,
+            @RequestParam String[] skills,
             @RequestParam String education,
             @RequestParam String experience,
-            @RequestParam String language,
+            @RequestParam String[] language,
             @RequestParam String description,
             Model model) {
-        NannyUser nannyUser = new NannyUser(userName, userSecondName, email, password,
-                birthDay, phone, location, address, hours, skills, education,
-                experience, language, description);
+        NannyUser nannyUser = new NannyUser(userName, userFullName, email, password,
+                birthDay, phone, location, address, String.join(",", hours), String.join("," , skills),
+                education, experience, String.join(",", language), description);
         nannyRepository.save(nannyUser);
         return "login";
     }
@@ -103,18 +102,60 @@ public class NannyUserController {
         return "nannyProfile";
     }
 
-    /*@GetMapping("/nannyProfile/{id}")
-    public String addNannie(@PathVariable(value = "id") long id, Model model) {
-        Iterable<NannyUser> nannies = nannyRepository.findAll();
-        model.addAttribute("nannies", nannies);
-        return "nannyProfile";
-    }*/
+    @GetMapping("nannyProfile/{id}/edit")
+    public String editNannyProfile(@PathVariable(value = "id") long id, Model model) {
+        Optional<NannyUser> nannyUser = nannyRepository.findById(id);
+        ArrayList<NannyUser> result = new ArrayList<>();
+        nannyUser.ifPresent(result::add);
+        model.addAttribute("nannyUser", result);
+        return "nannyProfileEdit";
+    }
 
-    /*@PostMapping("/nannyProfile/{id}")
-    public String addNannieeProfile(@PathVariable(value = "id") long id, Model model) {
-        return "nannyProfile";    }*/
+    @PostMapping("nannyProfile/{id}/edit")
+    public String nannyProfileUpdate(
+            @PathVariable(value = "id") long id,
+            @RequestParam String userName,
+            @RequestParam String userFullName,
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam String birthDay,
+            @RequestParam String phone,
+            @RequestParam String location,
+            @RequestParam String address,
+            @RequestParam String[] hours,
+            @RequestParam String[] skills,
+            @RequestParam String education,
+            @RequestParam String experience,
+            @RequestParam String[] language,
+            @RequestParam String description,
+            Model model) {
+        NannyUser nannyUser = nannyRepository.findById(id).orElseThrow();
+        nannyUser.setUserName(userName);
+        nannyUser.setUserFullName(userFullName);
+        nannyUser.setEmail(email);
+        nannyUser.setPassword(password);
+        nannyUser.setBirthDay(birthDay);
+        nannyUser.setPhone(phone);
+        nannyUser.setLocation(location);
+        nannyUser.setAddress(address);
+        nannyUser.setHours(String.join(",", hours));
+        nannyUser.setSkills(String.join(",", skills));
+        nannyUser.setEducation(education);
+        nannyUser.setExperience(experience);
+        nannyUser.setLanguage(String.join(",", language));
+        nannyUser.setDescription(description);
+        nannyRepository.save(nannyUser);
+        return "redirect:/nannyProfile/{id}";
+    }
 
-    private final UserService userService;
+    @PostMapping("nannyProfile/{id}/remove")
+    public String nannyProfileDelete(
+            @PathVariable(value = "id") long id,
+            Model model) {
+        NannyUser nannyUser = nannyRepository.findById(id).orElseThrow();
+        nannyRepository.delete(nannyUser);
+        return "redirect:/";
 
+    }
 }
 

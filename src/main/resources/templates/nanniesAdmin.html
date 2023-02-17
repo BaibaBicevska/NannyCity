@@ -9,8 +9,8 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">First name</th>
-    <th scope="col">Second Name</th>
+    <th scope="col">Username</th>
+    <th scope="col">User full name</th>
     <th scope="col">email</th>
     <th scope="col">Password</th>
     <th scope="col">BirthDay</th>
@@ -29,7 +29,7 @@
   <tr th:each="el : ${nannies}">
     <th scope="row">1</th>
     <td th:text="${el.userName}"/>
-    <td th:text="${el.userSecondName}"/>
+    <td th:text="${el.userFullName}"/>
     <td th:text="${el.email}"/>
     <td th:text="${el.password}"/>
     <td th:text="${el.birthDay}"/>
