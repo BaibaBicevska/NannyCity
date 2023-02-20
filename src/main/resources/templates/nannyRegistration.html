@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <style>
         .btn {
             background-color: #F9C8CC !important;
@@ -35,237 +37,246 @@
 <div class="container">
     <!--<h2>Do you want to register?</h2>
     <button type="button" class="btn btn-default btn-lg" id="Btn1">Registration</button>
+    <div class="modal fade" id="Modal1" role="dialog">-->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-lock"></span> Registration</h4>
+                </div>
 
-    <div class="modal fade" id="Modal1" role="dialog">
-      <div class="modal-dialog">-->
+        <div class="modal-body" style="padding:40px 50px;">
+            <form action="/nannyRegistration" method="post">
+                <div class="form-group">
+                    <label for="userName"><span class="glyphicon glyphicon-user"></span> Username</label>
+                    <input type="text" name="userName" minlength="4" required
+                           th:value="${nannyUser?.getUserName()}" class="form-control" id="userName"
+                           placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="userFullName"><span class="glyphicon glyphicon-user"></span> Full name</label>
+                    <input type="text" name="userFullName" minlength="4" required
+                           th:value="${nannyUser?.getUserFullName()}" class="form-control" id="userFullName"
+                           placeholder="User full name">
+                </div>
+                <div class="form-group">
+                    <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+                    <input name="email" required th:value="${nannyUser?.getEmail()}" type="email"
+                           class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                    <input name="password" minlength="5" required th:value="${nannyUser?.getPassword()}"
+                           type="password" class="form-control" id="psw1"
+                           placeholder="Enter password">
+                    <br/>
+                    <input type="password" minlength="5" required th:value="${nannyUser?.getPassword()}"
+                           class="form-control" id="psw2" placeholder="Enter password again">
+                </div>
+                <div class="form-group">
+                    <label for="birthDate"><span class="glyphicon glyphicon-calendar"></span> Birth date</label>
+                    <input name="birthDay" type="date" value="2005-01-01"
+                           min="1940-01-01" max="2006-01-01" class="form-control" id="birthDate">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber"><span class="glyphicon glyphicon-phone-alt"></span> Phone
+                        number</label>
+                    <input name="phone" pattern="^\+371\d{8}$" value="+" maxlength="12" type="tel"
+                           class="form-control" id="phoneNumber"
+                           placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="location"><span class="glyphicon glyphicon-location"></span> Location</label>
+                    <input name="location" minlength="3" required th:value="${nannyUser?.getLocation()}"
+                           type="text" class="form-control" id="location"
+                           placeholder="Enter your location">
+                </div>
+                <div class="form-group">
+                    <label for="address"><span class="glyphicon glyphicon-home"></span> Address</label>
+                    <input name="address" minlength="3" required th:value="${nannyUser?.getAddress()}"
+                           type="text" class="form-control" id="address"
+                           placeholder="Enter your address">
+                </div>
+                <div class="form-group">
+                    <label for="photo"><span class="glyphicon glyphicon-picture"></span> Load your photo</label>
+                    <input name="profilePicture" type="#" class="form-control" id="photo"
+                           placeholder="Load your photo">
+                </div>
 
-    <div class="modal-content">
-        <div class="modal-header" style="padding:35px 50px;">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4><span class="glyphicon glyphicon-lock"></span> Registration</h4>
-        </div>
-        <form action="nannyRegistration" method="post">
-            <div class="modal-body" style="padding:40px 50px;">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="firstName"><span class="glyphicon glyphicon-user"></span> Username</label>
-                        <input name="userName" type="text" class="form-control" id="firstName" placeholder="First name">
-                        <!--<div class="alert alert-warning" th:if="${#fields.hasErrors('userName')}" th:errors="*{nannyUser.username}"></div>-->
-                    </div>
-                    <div class="form-group">
-                        <label for="userFullName"><span class="glyphicon glyphicon-user"></span> Full name</label>
-                        <input name="userFullName" type="text" class="form-control" id="userFullName"
-                               placeholder="User full name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
-                        <input name="email" type="email" class="form-control" id="email" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                        <input name="password" type="password" class="form-control" id="psw1"
-                               placeholder="Enter password">
-                        <br/>
-                        <input type="password" class="form-control" id="psw2" placeholder="Enter password again">
-                    </div>
-                    <div class="form-group">
-                        <label for="birthDate"><span class="glyphicon glyphicon-calendar"></span> Birth date</label>
-                        <input name="birthDay" type="date" class="form-control" id="birthDate">
-                        <!--<p th:if="${#fields.hasErrors('age')}">Invalid Age</p>-->
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber"><span class="glyphicon glyphicon-phone-alt"></span> Phone
-                            number</label>
-                        <input name="phone" type="number" class="form-control" id="phoneNumber"
-                               placeholder="Enter your phone number">
-                    </div>
-                    <div class="form-group">
-                        <label for="location"><span class="glyphicon glyphicon-location"></span> Location</label>
-                        <input name="location" type="text" class="form-control" id="location"
-                               placeholder="Enter your location">
-                    </div>
-                    <div class="form-group">
-                        <label for="address"><span class="glyphicon glyphicon-home"></span> Address</label>
-                        <input name="address" type="text" class="form-control" id="address"
-                               placeholder="Enter your address">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo"><span class="glyphicon glyphicon-picture"></span> Load your photo</label>
-                        <input name="profilePicture" type="#" class="form-control" id="photo"
-                               placeholder="Load your photo">
-                    </div>
-
-                    <div class="checkboxes_registration">
-                        <h5 style="margin-right:20px;">Working hours</h5>
-                        <div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="full-time"
-                                       id="hours1">
-                                <label class="form-check-label" for="check1">
-                                    Full-time
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="night hours"
-                                       id="hours2">
-                                <label class="form-check-label" for="check2">
-                                    Night hours
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="evening hours"
-                                       id="hours3">
-                                <label class="form-check-label" for="check3">
-                                    Evening hours
-                                </label>
-                            </div>
+                <div class="checkboxes_registration">
+                    <h5 style="margin-right:20px;">Working hours</h5>
+                    <div>
+                        <div class="form-check">
+                            <input name="hours" class="form-check-input" type="checkbox" value="full-time"
+                                   id="hours1">
+                            <label class="form-check-label" for="check1">
+                                Full-time
+                            </label>
                         </div>
-                        <div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="day hours"
-                                       id="hours4">
-                                <label class="form-check-label" for="check4">
-                                    Day hours
-                                </label>
-                            </div>
+                        <div class="form-check">
+                            <input name="hours" class="form-check-input" type="checkbox" value="night hours"
+                                   id="hours2">
+                            <label class="form-check-label" for="check2">
+                                Night hours
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="hours" class="form-check-input" type="checkbox" value="evening hours"
+                                   id="hours3">
+                            <label class="form-check-label" for="check3">
+                                Evening hours
+                            </label>
                         </div>
                     </div>
-
-                    <div class="checkboxes_registration">
-                        <h5 style="margin-right:20px;">Additional skills</h5>
-                        <div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="driving"
-                                       id="check1">
-                                <label class="form-check-label" for="check1">
-                                    Driving
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="cooking"
-                                       id="check2">
-                                <label class="form-check-label" for="check2">
-                                    Cooking
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="house cleaning"
-                                       id="check3">
-                                <label class="form-check-label" for="check3">
-                                    House cleaning
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="ironing"
-                                       id="check4">
-                                <label class="form-check-label" for="check4">
-                                    Ironing
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="house cleaning"
-                                       id="check5">
-                                <label class="form-check-label" for="check5">
-                                    House cleaning
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="shopping"
-                                       id="check6">
-                                <label class="form-check-label" for="check6">
-                                    Shopping
-                                </label>
-                            </div>
+                    <div>
+                        <div class="form-check">
+                            <input name="hours" class="form-check-input" type="checkbox" value="day hours"
+                                   id="hours4">
+                            <label class="form-check-label" for="check4">
+                                Day hours
+                            </label>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="education"><span class="glyphicon glyphicon-education"></span> Education </label>
-                        <input name="education" type="text" class="form-control" id="education"
-                               placeholder="Enter your education and certificates">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="experience"><span class="glyphicon glyphicon-certificate"></span> Experience
-                        </label>
-                        <input name="experience" type="text" class="form-control" id="experience"
-                               placeholder="Enter your experience">
-                    </div>
-
-                    <div class="checkboxes_registration">
-                        <h5 style="margin-right:20px;">What languages do you speak? </h5>
-                        <div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="english"
-                                       id="language1">
-                                <label class="form-check-label" for="check1">
-                                    English
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="latvian"
-                                       id="language2">
-                                <label class="form-check-label" for="check2">
-                                    Latvian
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="lithuanian"
-                                       id="language3">
-                                <label class="form-check-label" for="check3">
-                                    Lithuanian
-                                </label>
-                            </div>
+                <div class="checkboxes_registration">
+                    <h5 style="margin-right:20px;">Additional skills</h5>
+                    <div>
+                        <div class="form-check">
+                            <input name="skills" class="form-check-input" type="checkbox" value="driving"
+                                   id="check1">
+                            <label class="form-check-label" for="check1">
+                                Driving
+                            </label>
                         </div>
-                        <div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="russian"
-                                       id="language4">
-                                <label class="form-check-label" for="check4">
-                                    Russian
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="german"
-                                       id="language5">
-                                <label class="form-check-label" for="check5">
-                                    German
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="other"
-                                       id="language6">
-                                <label class="form-check-label" for="check6">
-                                    other
-                                </label>
-                            </div>
+                        <div class="form-check">
+                            <input name="skills" class="form-check-input" type="checkbox" value="cooking"
+                                   id="check2">
+                            <label class="form-check-label" for="check2">
+                                Cooking
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="skills" class="form-check-input" type="checkbox" value="house cleaning"
+                                   id="check3">
+                            <label class="form-check-label" for="check3">
+                                House cleaning
+                            </label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="description"><span class="glyphicon glyphicon-picture"></span> Description </label>
-                        <textarea name="description" type="comment" class="form-control" id="description"
-                                  placeholder="Enter information about you"></textarea>
+                    <div>
+                        <div class="form-check">
+                            <input name="skills" class="form-check-input" type="checkbox" value="ironing"
+                                   id="check4">
+                            <label class="form-check-label" for="check4">
+                                Ironing
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="skills" class="form-check-input" type="checkbox" value="house cleaning"
+                                   id="check5">
+                            <label class="form-check-label" for="check5">
+                                House cleaning
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="skills" class="form-check-input" type="checkbox" value="shopping"
+                                   id="check6">
+                            <label class="form-check-label" for="check6">
+                                Shopping
+                            </label>
+                        </div>
                     </div>
+                </div>
 
-                    <button type="submit" class="btn btn-success btn-block"><span
-                            class="glyphicon glyphicon-off"></span> Register
-                    </button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span
-                        class="glyphicon glyphicon-remove"></span> Cancel
+                <div class="form-group">
+                    <label for="education"><span class="glyphicon glyphicon-education"></span> Education
+                    </label>
+                    <input name="education" minlength="5" required th:value="${nannyUser?.getEducation()}"
+                           type="text" class="form-control" id="education"
+                           placeholder="Enter your education and certificates">
+                </div>
+
+                <div class="form-group">
+                    <label for="experience"><span class="glyphicon glyphicon-certificate"></span> Experience
+                    </label>
+                    <input name="experience" minlength="5" required th:value="${nannyUser?.getExperience()}"
+                           type="text" class="form-control" id="experience"
+                           placeholder="Enter your experience">
+                </div>
+
+                <div class="checkboxes_registration">
+                    <h5 style="margin-right:20px;">What languages do you speak? </h5>
+                    <div>
+                        <div class="form-check">
+                            <input name="language" class="form-check-input" type="checkbox" value="english"
+                                   id="language1">
+                            <label class="form-check-label" for="check1">
+                                English
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="language" class="form-check-input" type="checkbox" value="latvian"
+                                   id="language2">
+                            <label class="form-check-label" for="check2">
+                                Latvian
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="language" class="form-check-input" type="checkbox" value="lithuanian"
+                                   id="language3">
+                            <label class="form-check-label" for="check3">
+                                Lithuanian
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-check">
+                            <input name="language" class="form-check-input" type="checkbox" value="russian"
+                                   id="language4">
+                            <label class="form-check-label" for="check4">
+                                Russian
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="language" class="form-check-input" type="checkbox" value="german"
+                                   id="language5">
+                            <label class="form-check-label" for="check5">
+                                German
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input name="language" class="form-check-input" type="checkbox" value="other"
+                                   id="language6">
+                            <label class="form-check-label" for="check6">
+                                other
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description"><span class="glyphicon glyphicon-picture"></span> Description
+                    </label>
+                    <textarea name="description" type="comment" class="form-control" id="description"
+                              placeholder="Enter information about you"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block"><span
+                        class="glyphicon glyphicon-off"></span> Register
                 </button>
-                <p>Do you have an account? <a href="/login">Log in</a></p>
-            </div>
-        </form>
-    </div>
-
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"
+                    id="myModal"><span
+                    class="glyphicon glyphicon-remove"></span> Cancel
+            </button>
+            <p>Do you have an account? <a href="/login">Log in</a></p>
+        </div>
 </div>
-<!--</div>
+   <!-- </div>
 </div>-->
+
 
 <script>
     $(document).ready(function () {
@@ -273,6 +284,7 @@
             $("#Modal1").modal();
         });
     });
+
 </script>
 
 </body>

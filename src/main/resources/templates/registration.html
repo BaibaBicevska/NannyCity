@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+    a:hover, a:focus {
+        outline: none;
+        text-decoration: none;
+    }
+
+    .tab {
+        background: #200122;
+        background: -webkit-linear-gradient(to bottom, #6f0000, #200122);
+        background: linear-gradient(to bottom, #6f0000, #200122);
+        padding: 40px 50px;
+        position: relative;
+    }
+
+    .tab:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(#2e3a6a, #2f0b45);
+        opacity: 0.85;
+    }
+
+    .tab .nav-tabs {
+        border-bottom: none;
+        padding: 0 20px;
+        position: relative;
+    }
+
+    .tab .nav-tabs li {
+        margin: 0 30px 0 0;
+    }
+
+    .tab .nav-tabs li a {
+        font-size: 18px;
+        color: #fff;
+        border-radius: 0;
+        text-transform: uppercase;
+        background: transparent;
+        padding: 0;
+        margin-right: 0;
+        border: none;
+        border-bottom: 2px solid transparent;
+        opacity: 0.5;
+        position: relative;
+        transition: all 0.5s ease 0s;
+    }
+
+    .tab .nav-tabs li a:hover {
+        background: transparent;
+    }
+
+    .tab .nav-tabs li.active a,
+    .tab .nav-tabs li.active a:focus,
+    .tab .nav-tabs li.active a:hover {
+        border: none;
+        background: transparent;
+        opacity: 1;
+        border-bottom: 2px solid #eec111;
+        color: #fff;
+    }
+
+    .tab .tab-content {
+        padding: 20px 0 0 0;
+        margin-top: 20px;
+        background: transparent;
+        z-index: 1;
+        position: relative;
+    }
+
+    .form-bg {
+        background: #ddd;
+    }
+
+    .form-horizontal .form-group {
+        margin: 20px 0 15px 0;
+        position: relative;
+    }
+
+    .form-horizontal .form-control {
+        height: 40px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 20px;
+        box-shadow: none;
+        padding: 0 20px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        transition: all 0.3s ease 0s;
+    }
+
+    .form-horizontal .form-control:focus {
+        box-shadow: none;
+        outline: 0 none;
+    }
+
+    .form-horizontal .form-group label {
+        padding: 0 20px;
+        color: #7f8291;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+
+    }
+
+    .form-horizontal .main-checkbox {
+        width: 20px;
+        height: 20px;
+        background: #eec111;
+        float: left;
+        margin: 5px 0 0 20px;
+        border: 1px solid #eec111;
+        position: relative;
+    }
+
+    .form-horizontal .main-checkbox label {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+
+    .form-horizontal .main-checkbox label:after {
+        content: "";
+        width: 10px;
+        height: 5px;
+        position: absolute;
+        top: 5px;
+        left: 4px;
+        border: 3px solid #fff;
+        border-top: none;
+        border-right: none;
+        background: transparent;
+        opacity: 0;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    .form-horizontal .main-checkbox input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    .form-horizontal .main-checkbox input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+
+    .form-horizontal .text {
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        margin-left: 7px;
+        line-height: 20px;
+        padding-top: 5px;
+        text-transform: capitalize;
+    }
+
+    .form-horizontal .btn {
+        width: 100%;
+        background: #eec111;
+        padding: 10px 20px;
+        border: none;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        border-radius: 20px;
+        text-transform: uppercase;
+        margin: 20px 0 30px 0;
+    }
+
+    .form-horizontal .btn:focus {
+        background: #eec111;
+        color: #fff;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .form-horizontal .forgot-pass {
+        border-top: 1px solid #615f6c;
+        margin: 0;
+        text-align: center;
+    }
+
+    .form-horizontal .forgot-pass .btn {
+        width: auto;
+        background: transparent;
+        margin: 30px 0 0 0;
+        color: #615f6c;
+        text-transform: capitalize;
+        transition: all 0.3s ease 0s;
+    }
+
+    .form-horizontal .forgot-pass .btn:hover {
+        color: #eec111;
+    }
+
+    @media only screen and (max-width: 479px) {
+        .tab {
+            padding: 40px 20px;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+
+            <div class="tab" role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab"
+                                                              data-toggle="tab">sign in</a></li>
+                    <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">sign
+                        up</a></li>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tabs">
+                    <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="userName"><span class="glyphicon glyphicon-user"></span> Username</label>
+                                <input name="userName" type="text" class="form-control" id="userName"
+                                       placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                                <input type="password" name="password" class="form-control" id="psw1"
+                                       placeholder="Password">
+                                <br/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Sign in</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section2">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="userName"><span class="glyphicon glyphicon-user"></span> Username</label>
+                                <input type="text" name="userName" minlength="4" required
+                                       th:value="${nannyUser?.getUserName()}" class="form-control" id="userName"
+                                       placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label for="userFullName"><span class="glyphicon glyphicon-user"></span> Full
+                                    name</label>
+                                <input type="text" name="userFullName" minlength="4" required
+                                       th:value="${nannyUser?.getUserFullName()}" class="form-control" id="userFullName"
+                                       placeholder="User full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+                                <input name="email" required th:value="${nannyUser?.getEmail()}" type="email"
+                                       class="form-control" id="email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                                <input name="password" minlength="5" required th:value="${nannyUser?.getPassword()}"
+                                       type="password" class="form-control" id="psw1"
+                                       placeholder="Enter password">
+                                <br/>
+                                <input type="password" minlength="5" required th:value="${nannyUser?.getPassword()}"
+                                       class="form-control" id="psw2" placeholder="Enter password again">
+                            </div>
+                            <div class="form-group">
+                                <label for="birthDate"><span class="glyphicon glyphicon-calendar"></span> Birth
+                                    date</label>
+                                <input name="birthDay" type="date" value="2005-01-01"
+                                       min="1940-01-01" max="2006-01-01" class="form-control" id="birthDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber"><span class="glyphicon glyphicon-phone-alt"></span> Phone
+                                    number</label>
+                                <input name="phone" pattern="^\+371\d{8}$" value="+" maxlength="12" type="tel"
+                                       class="form-control" id="phoneNumber"
+                                       placeholder="Enter your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="location"><span class="glyphicon glyphicon-location"></span>
+                                    Location</label>
+                                <input name="location" minlength="3" required th:value="${nannyUser?.getLocation()}"
+                                       type="text" class="form-control" id="location"
+                                       placeholder="Enter your location">
+                            </div>
+                            <div class="form-group">
+                                <label for="address"><span class="glyphicon glyphicon-home"></span> Address</label>
+                                <input name="address" minlength="3" required th:value="${nannyUser?.getAddress()}"
+                                       type="text" class="form-control" id="address"
+                                       placeholder="Enter your address">
+                            </div>
+                            <div class="form-group">
+                                <label for="photo"><span class="glyphicon glyphicon-picture"></span> Load your
+                                    photo</label>
+                                <input name="profilePicture" type="#" class="form-control" id="photo"
+                                       placeholder="Load your photo">
+                            </div>
+
+                            <div style="display: flex; color: #7f8291" class="checkboxes_registration">
+                                <h5 style="margin-right:20px;">Working hours</h5>
+                                <div>
+                                    <div class="form-check">
+                                        <input name="hours" class="form-check-input" type="checkbox" value="full-time"
+                                               id="hours1">
+                                        <label class="form-check-label" for="check1">
+                                            Full-time
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="hours" class="form-check-input" type="checkbox" value="night hours"
+                                               id="hours2">
+                                        <label class="form-check-label" for="check2">
+                                            Night hours
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="hours" class="form-check-input" type="checkbox"
+                                               value="evening hours"
+                                               id="hours3">
+                                        <label class="form-check-label" for="check3">
+                                            Evening hours
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-check">
+                                        <input name="hours" class="form-check-input" type="checkbox" value="day hours"
+                                               id="hours4">
+                                        <label class="form-check-label" for="check4">
+                                            Day hours
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; color: #7f8291" class="checkboxes_registration">
+                                <h5 style="margin-right:20px;">Additional skills</h5>
+                                <div>
+                                    <div class="form-check">
+                                        <input name="skills" class="form-check-input" type="checkbox" value="driving"
+                                               id="check1">
+                                        <label class="form-check-label" for="check1">
+                                            Driving
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="skills" class="form-check-input" type="checkbox" value="cooking"
+                                               id="check2">
+                                        <label class="form-check-label" for="check2">
+                                            Cooking
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="skills" class="form-check-input" type="checkbox"
+                                               value="house cleaning"
+                                               id="check3">
+                                        <label class="form-check-label" for="check3">
+                                            House cleaning
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-check">
+                                        <input name="skills" class="form-check-input" type="checkbox" value="ironing"
+                                               id="check4">
+                                        <label class="form-check-label" for="check4">
+                                            Ironing
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="skills" class="form-check-input" type="checkbox"
+                                               value="house cleaning"
+                                               id="check5">
+                                        <label class="form-check-label" for="check5">
+                                            House cleaning
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="skills" class="form-check-input" type="checkbox" value="shopping"
+                                               id="check6">
+                                        <label class="form-check-label" for="check6">
+                                            Shopping
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="education"><span class="glyphicon glyphicon-education"></span> Education
+                                </label>
+                                <input name="education" minlength="5" required th:value="${nannyUser?.getEducation()}"
+                                       type="text" class="form-control" id="education"
+                                       placeholder="Enter your education and certificates">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="experience"><span class="glyphicon glyphicon-certificate"></span> Experience
+                                </label>
+                                <input name="experience" minlength="5" required th:value="${nannyUser?.getExperience()}"
+                                       type="text" class="form-control" id="experience"
+                                       placeholder="Enter your experience">
+                            </div>
+                            <div style="display: flex; color: #7f8291" class="checkboxes_registration">
+                                <h5 style="margin-right:20px;">What languages do you speak? </h5>
+                                <div>
+                                    <div class="form-check">
+                                        <input name="language" class="form-check-input" type="checkbox" value="english"
+                                               id="language1">
+                                        <label class="form-check-label" for="check1">
+                                            English
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="language" class="form-check-input" type="checkbox" value="latvian"
+                                               id="language2">
+                                        <label class="form-check-label" for="check2">
+                                            Latvian
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="language" class="form-check-input" type="checkbox"
+                                               value="lithuanian"
+                                               id="language3">
+                                        <label class="form-check-label" for="check3">
+                                            Lithuanian
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-check">
+                                        <input name="language" class="form-check-input" type="checkbox" value="russian"
+                                               id="language4">
+                                        <label class="form-check-label" for="check4">
+                                            Russian
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="language" class="form-check-input" type="checkbox" value="german"
+                                               id="language5">
+                                        <label class="form-check-label" for="check5">
+                                            German
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="language" class="form-check-input" type="checkbox" value="other"
+                                               id="language6">
+                                        <label class="form-check-label" for="check6">
+                                            other
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description"><span class="glyphicon glyphicon-picture"></span> Description
+                                </label>
+                                <textarea style="height:62px; padding-top:10px" name="description" type="comment" class="form-control" id="description"
+                                          placeholder="Enter information about you"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.col-md-offset-3 col-md-6 -->
+    </div><!-- /.row -->
+</div><!-- /.container -->
+</body>
+</html>

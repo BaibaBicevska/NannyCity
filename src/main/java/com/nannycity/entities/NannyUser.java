@@ -2,6 +2,7 @@ package com.nannycity.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,13 +21,11 @@ public class NannyUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
-    //@NotEmpty(message = "User's name cannot be empty.")
-    //@Size(min = 5, max = 250)
     private String userName;
     private String userFullName;
     @Column(unique = true)
     private String email;
+
     private String password;
     private String birthDay;
     private String phone;

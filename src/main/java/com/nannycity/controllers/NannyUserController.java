@@ -6,9 +6,11 @@ import com.nannycity.repositories.NannyRepository;
 import com.nannycity.services.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +30,7 @@ public class NannyUserController {
 
     @GetMapping("/login")
     public String showNannieLogin(
-            @RequestParam(name="message", required = false) String message,
+            @RequestParam(name = "message", required = false) String message,
             Model model) {
         model.addAttribute("message", message);
         return "login";
@@ -47,11 +49,6 @@ public class NannyUserController {
         }
     }
 
-    @GetMapping("/nannyRegistration")
-    public String showNannyRegistrationPage(NannyUser nannyUser){
-        return "nannyRegistration";
-    }
-
     @Autowired
     private NannyRepository nannyRepository;
 
@@ -62,7 +59,12 @@ public class NannyUserController {
         return "allNannies";
     }
 
-    @PostMapping("/nannyRegistration")
+    @GetMapping("/nannyRegistration")
+    public String showNannyRegistrationPage(NannyUser nannyUser) {
+        return "nannyRegistration";
+    }
+
+    /*@PostMapping("/nannyRegistration")
     public String addNanny(
             @RequestParam String userName,
             @RequestParam String userFullName,
@@ -84,7 +86,24 @@ public class NannyUserController {
                 education, experience, String.join(",", language), description);
         nannyRepository.save(nannyUser);
         return "login";
-    }
+    }*/
+
+    /*@PostMapping("/nannyRegistration")
+    public String addNanny(@Valid NannyUser nannyUser, Errors errors, Model model) {
+        if (null != errors && errors.getErrorCount() > 0) {
+            System.out.println("ndkfdjfjdk");
+            return "nannyRegistration";
+        } else {
+            nannyRepository.save(nannyUser);
+            return "login";
+        }
+    }*/
+
+    @PostMapping("/nannyRegistration")
+    public String addNanny(@Valid NannyUser nannyUser, Model model) {
+            nannyRepository.save(nannyUser);
+            return "login";
+        }
 
     @GetMapping("nanniesAdmin")
     public String showNanniesAdmin(Model model) {
@@ -155,7 +174,11 @@ public class NannyUserController {
         NannyUser nannyUser = nannyRepository.findById(id).orElseThrow();
         nannyRepository.delete(nannyUser);
         return "redirect:/";
+    }
 
+    @GetMapping("/contacts")
+    public String showContactsPage(Model model) {
+        return "contacts";
     }
 }
 
