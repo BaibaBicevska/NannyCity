@@ -16,47 +16,6 @@
             color: #000;
         }
 
-        .card {
-            border-radius: 10px;
-        }
-
-        .profile_img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin: 10px auto;
-            border: 10px solid #ccc;
-            border-radius: 50%;
-        }
-
-        .h3 {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .header__nav {
-            padding-left: 350px;
-            padding-right: 350px;
-            padding-top: 35px;
-            padding-bottom: 18px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items:center;
-            font-size: 17px;
-            line-height: 18px;
-        }
-
-        .header__links {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        .nanny_card {
-            margin: 50px;
-        }
-
         body {
             font-family: tahoma;
             height: 100vh;
@@ -179,7 +138,8 @@
         <div th:each="el : ${nannies}" class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="our-team">
                 <div class="picture">
-                    <img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+                    <img th:src="${el.profilePicture}"/>
+                    <!--<img class="img-fluid" src="https://picsum.photos/130/130?image=1027">-->
                 </div>
                 <div class="team-content">
                     <h3 th:text="${el.userFullName}" class="name"/>
