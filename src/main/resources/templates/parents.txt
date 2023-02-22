@@ -190,16 +190,13 @@
             <button class="btn btn-success btn-block" type="submit"><span class="glyphicon glyphicon-off"></span>
                 Register for parents</a></button>
         </form>
-        <br>
-        <div>
-            <br>
-        </div>
+
         <div class="modal-footer">
             <div>
-                <button class="btn btn-success btn-default pull-left" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span><a href="/index.html"> Cancel</button>
-
+                <button class="btn btn-danger btn-default pull-left" data-dismiss="modal" type="submit"><span
+                        class="glyphicon glyphicon-remove"></span> <a href="/index"></a>Cancel
+                </button>
                 <p>Do you have an account? <a href="parentLogin">Log in for parents</a></p>
-
             </div>
         </div>
 

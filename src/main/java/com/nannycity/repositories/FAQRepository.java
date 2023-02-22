@@ -1,6 +1,6 @@
 package com.nannycity.repositories;
 
-import com.nannycity.entities.NannyUser;
+import com.nannycity.entities.FAQ;
 import com.nannycity.entities.ParentUser;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -8,11 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 @Repository
-public interface ParentRepository extends CrudRepository<ParentUser, Long> {
-
-    ParentUser findByUserNameAndPassword(String userName, String password);
-
+public interface FAQRepository extends CrudRepository<FAQ, Long> {
     @Override
-    ArrayList<ParentUser> findAll();
-
+    ArrayList<FAQ> findAll();
 }
