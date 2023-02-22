@@ -2,6 +2,7 @@ package com.nannycity.controllers;
 
 import com.nannycity.entities.FAQ;
 
+import com.nannycity.entities.NannyUser;
 import com.nannycity.repositories.FAQRepository;
 import com.nannycity.services.FAQService;
 import jakarta.validation.Valid;
@@ -32,6 +33,7 @@ public class FAQController {
     @GetMapping("/question")
     public String displayQuestionRoom(Model model) {
         try {
+            Iterable<FAQ> questions = faqRepository.findAll();
             model.addAttribute("questions", faqService.getAllChats());
             return "question";
         } catch (Exception e) {

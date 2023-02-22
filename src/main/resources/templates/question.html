@@ -24,7 +24,7 @@
             </div>
             <div>
 
-                <ul  style="color: #57180A;">
+                <ul style="color: #57180A;">
                     <h3>HOW LONG WILL IT TAKE TO FIND A SITTER?</h3>
                     <li style="color: #9B2409;">
                         We work quickly to find several sitters in your area. This process can take up to a week,
@@ -34,7 +34,8 @@
                     <li style="color: #9B2409;">
                         Our pricing varies depending on the needs of each family. Pricing includes a placement fee and
                         an hourly wage rate. This rate includes the sitter's wage, taxes and insurance coverage. Our
-                        families also enjoy access to ongoing professional guidance from NannyCity placement professionals
+                        families also enjoy access to ongoing professional guidance from NannyCity placement
+                        professionals
                         and access to our back up care services. Once we’ve learned more about your specific needs, we
                         can offer your family a detailed quote and price range.
                     </li>
@@ -47,23 +48,24 @@
                     </li>
                     <h3>I'M EXCITED TO FIND A SITTER FOR MY FAMILY. WHAT ARE THE NEXT STEPS?</h3>
                     <li style="color: #9B2409;">
-                        We can't wait to meet you! Please Login in for parents and write your needs and expectation on our website, and
+                        We can't wait to meet you! Please Login in for parents and write your needs and expectation on
+                        our website, and
                         we'll be in touch soon.
                     </li>
                     <br>
                     <h3 style="color:tomato;">Thank you, for your question, we will reply as soon as possible :) </h3>
                 </ul>
-<!--                        <div th:each="qu : ${questions}">-->
-
-<!--                                <div>-->
-<!--                                    <img src="static/images/baby.jpeg">-->
-<!--                                </div>-->
-<!--                                    <div>-->
-<!--                                        <p><b>question:</b> <span th:text="${qu.question()}"/></p>-->
-<!--                                    </div>-->
-
-<!--                        </div>-->
-
+            </div>
+            <div>
+                <div th:each="qu : ${questions}">
+                    <div>
+                        <img src="static/images/baby.jpeg">
+                    </div>
+                    <div>
+                        <p><b>question:</b> <span th:text="${qu.question()}"/></p>
+                        <p><b>UserName:</b> <span th:text="${qu.person()}"/></p>
+                    </div>
+                </div>
             </div>
         </div>
         <div>
@@ -79,71 +81,6 @@
 </main>
 
 
-<footer class="footer">
-    <div class="container footer">
-        <div class="footer__all">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 footer__col footer__col_logo">
-                    <img src="images/logo.png" alt="logo">
-                </div>
-                <div class="col-lg-3 col-md-6 footer__col">
-                    <h5 class="footer__col_title">Site map</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link active" aria-current="page"
-                               href="/static">Main menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link" href="/index.html">Our services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link" href="/index.html">Nannies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link" href="/about/about.html">About us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link" href="#">Contacts</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 footer__col">
-                    <h5 class="footer__col_title">Contact us</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link active" aria-current="page"
-                               href="tel:+37121232523">+37126262626</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link" href="tel:+37122222222">+37122222222</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link" href="mailto:nanniescity@gmail.com">nanniescity@gmail.com</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link footer__col_link" href="#">
-                                <img src="/images/footer-logo-fb.svg" alt="fb">
-                                <img src="/images/footer-logo-google.svg" alt="google">
-                                <img src="/images/footer-logo-fb.svg" alt="fb">
-                                <img src="/images/footer-logo-google.svg" alt="google">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col footer__col"></div>
-                <div class="col footer__col"></div>
-                <div class="col footer__col_and">
-                    <a class="nav-link footer__col_link" href="/static">
-                        <img class="footer__col_arrows" src="images/footer-arrows.png" alt="arrows">
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col footer__col_rights">All rights are reserved</div>
-            </div>
-        </div>
-
-    </div>
-</footer>
+<footer th:insert="~{fragment/footer.html :: footer}"></footer>
 </body>
 </html>

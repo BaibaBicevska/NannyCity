@@ -12,8 +12,8 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
     <style>
         body {
-            background: #67B26F; /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #F9C8CC, #FFE5E9); /* Chrome 10-25, Safari 5.1-6 */
+            background: #67B26F;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #F9C8CC, #FFE5E9);  /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to right, #F9C8CC, #FFE5E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             padding: 0;
             margin: 0;
@@ -63,7 +63,7 @@
             padding-bottom: 18px;
             display: flex;
             justify-content: space-around;
-            align-items: center;
+            align-items:center;
             font-size: 17px;
             line-height: 18px;
         }
@@ -73,13 +73,11 @@
             text-decoration: none;
             font-size: 20px;
         }
-
         .buttons {
             padding-left: 100px;
         }
-
         .btn {
-            padding: 15px 70px;
+            padding:15px 70px;
             margin-right: 20px;
             margin-top: 20px;
             background-color: #F9C8CC;
@@ -87,71 +85,54 @@
         }
 
     </style>
+
+
+
 </head>
 <header th:insert="~{fragment/header.html :: header}"></header>
-
 <body>
 
 <div class="student-profile py-4">
     <div class="container">
-        <form method="get" th:action="'/parentProfile/' + ${id}">
-            <div class="row" th:each="el : ${parentUser}">
-                <div class="col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-transparent text-center">
-                            <img class="profile_img" src="https://source.unsplash.com/600x300/?student"
-                                 alt="student dp">
-                            <h3 th:text="${el.userFullName}"></h3>
-                        </div>
-                        <div class="card-body">
-                            <p class="mb-0"><strong class="pr-1"><b>Email:</b> <span th:text="${el.email}"></span>
-                            </strong></p>
-                            <p class="mb-0"><strong class="pr-1"><b>Phone number:</b> <span
-                                    th:text="${el.phone}"></span> </strong></p>
-                            <p class="mb-0"><strong class="pr-1"><b>Location: </b><span th:text="${el.location}"></span>
-                            </strong></p>
-                            <p class="mb-0"><strong class="pr-1"><b>Description:</b> <span
-                                    th:text="${el.description}"></span> </strong></p>
-                        </div>
+        <div class="row" th:each="pa : ${parentUser}">
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent text-center">
+                        <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
+                        <h3 th:text="${pa.userFullName}"></h3>
                     </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-transparent border-0">
-                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
-                        </div>
-                        <div class="card-body pt-0">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th width="30%">Working hours</th>
-                                    <td width="2%">:</td>
-                                    <td th:taxt="${el.hours}"></td>
-                                </tr>
-                                <tr>
-                                    <th width="30%">Language</th>
-                                    <td width="2%">:</td>
-                                    <td th:text="${el.language}"></td>
-                                </tr>
-                            </table>
-                        </div>
+                    <div class="card-body">
+                        <p><b>Email:</b> <span th:text="${pa.email}"></span></p>
+                        <p ><b>Phone number:</b> <span th:text="${pa.phone}"></span></p>
+                        <p ><b>Location</b><span th:text="${pa.location}" ></span> </p>
+                        <p ><b>Description:</b> <span th:text="${pa.description}"></span></p>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
-
-    <div>
-        <div class="card-body pt-0">
-            <!--    <img class="main__logo" src="images/logo.png" alt="Logo">-->
-            <div class="section__all">
-                <h1 class="text__become">Have a question?</h1>
-
-                <button type="button" class="btn btn-light button_find_parent"><a href="/FAQ1"> FAQ</a></button>
-
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Working hours</th>
+                                <td width="2%">:</td>
+                                <td th:taxt="${pa.hours}"></td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Language</th>
+                                <td width="2%">:</td>
+                                <td th:text="${pa.language}"/>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 </body>
 <footer th:insert="~{fragment/footer.html :: footer}"></footer>
-</html>
+</html>l>

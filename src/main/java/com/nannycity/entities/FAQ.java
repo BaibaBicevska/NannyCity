@@ -20,13 +20,22 @@ public class FAQ {
 
     private String question;
     private String person;
+    @CreationTimestamp
+    Timestamp createdAt;
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
 
 //    @ManyToOne
 //    @PrimaryKeyJoinColumn(name="USERID", referencedColumnName="id")
 //    private ParentUser parentuser;
 
-    @CreationTimestamp
-    Timestamp createdAt;
+
 
 
 //    public FAQ(String question) {

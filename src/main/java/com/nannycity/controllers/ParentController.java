@@ -67,20 +67,19 @@ public class ParentController {
 
     @GetMapping("/parentsRegistration")
     public String showParentRegistration(Model model) {
-
-
         model.addAttribute("all", parentRepository.findAll());
-
-
         return "parentsRegistration";
     }
 
     @GetMapping("/parentProfile/{id}")
     public String showParents(@PathVariable(value = "id") long id, Model model) {
-        Iterable<ParentUser> parents = parentRepository.findAll();
-        model.addAttribute("parents", parents);
+        Optional<ParentUser> parentUser = parentRepository.findById(id);
+        ArrayList<ParentUser> result = new ArrayList<>();
+        parentUser.ifPresent(result::add);
+        model.addAttribute("parentUser", result);
         return "parentProfile";
     }
+
 
 //    @PostMapping("/parentsRegistration")
 //    public String addParent(
@@ -114,13 +113,13 @@ public class ParentController {
     }
 
 
-//    @GetMapping("/parentsRegistration/{id}")
-//    public String parentProfileDetails(@PathVariable(value = "id") long id, @NotNull Model model) {
-//        Optional<ParentUser> parentUser = parentRepository.findById(id);
-//        ArrayList<ParentUser> result = new ArrayList<>();
-//        parentUser.ifPresent(result::add);
-//        model.addAttribute("parentUser", result);
-//        return "parentProfile";
-//    }
+    @GetMapping("/parentsRegistration/{id}")
+    public String parentProfileDetails(@PathVariable(value = "id") long id, @NotNull Model model) {
+        Optional<ParentUser> parentUser = parentRepository.findById(id);
+        ArrayList<ParentUser> result = new ArrayList<>();
+        parentUser.ifPresent(result::add);
+        model.addAttribute("parentUser", result);
+        return "parentProfile";
+    }
 
 }
