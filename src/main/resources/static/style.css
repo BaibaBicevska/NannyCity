@@ -55,7 +55,7 @@
 
 .text__find {
     padding-top: 150px;
-    padding-left: 550px;
+    padding-left: 150px; /*baiba change*/
     color: white;
     font-family: Inter;
     font-size: 40px;
@@ -66,7 +66,7 @@
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
-    margin-left: 700px;
+    margin-left: 200px; /*baiba change*/
     margin-top: 300px;
 }
 
@@ -128,4 +128,10 @@ iframe {
     transform: rotate(-90deg);
 }
 
+.section__right_FAQ { /*Baiba add*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 904px;
 
+    background-image: url("./images/kidsphoto1.jpg") ;
+}
