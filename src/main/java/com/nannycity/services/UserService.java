@@ -1,7 +1,9 @@
 package com.nannycity.services;
 
 import com.nannycity.entities.NannyUser;
+import com.nannycity.entities.ParentUser;
 import com.nannycity.repositories.NannyRepository;
+import com.nannycity.repositories.ParentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ public class UserService {
     @Autowired // dependency injection
     public UserService(NannyRepository nannyRepository) {
         this.nannyRepository = nannyRepository;
+
     }
 
     public void createUser(NannyUser nannyUser) throws Exception {
@@ -27,7 +30,9 @@ public class UserService {
         return foundUser;
     }
 
+
     public NannyUser findUserById(Long userId) throws Exception {
         return this.nannyRepository.findById(userId).orElseThrow();
     }
+
 }
