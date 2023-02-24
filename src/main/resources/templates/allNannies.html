@@ -130,9 +130,7 @@
     </style>
 </head>
 <header th:insert="~{fragment/header.html :: header}"></header>
-
 <body>
-
 <div class="container">
     <div class="row">
         <div th:each="el : ${nannies}" class="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -148,6 +146,10 @@
                         <p><b>Birth date:</b> <span th:text="${el.birthDay}"/></p>
                         <p><b>Phone number:</b> <span th:text="${el.phone}"/></p>
                         <p><b>Location:</b> <span th:text="${el.location}"/></p>
+                        <form th:action="'/allNannies/' + ${el.getId() + '/chat'}">
+                            <button class="btn" style="background-color: pink">Contact nanny</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

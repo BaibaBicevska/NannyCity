@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <title>Bootstrap 5.0 Pricing Table</title>
+
+  <style>
+    .card {
+      border:none;
+      padding: 10px 50px;
+    }
+
+    .card-title {
+      font-size: 30px;
+    }
+
+    .card::after {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+      -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .card:hover {
+
+
+      transform: scale(1.02, 1.02);
+      -webkit-transform: scale(1.02, 1.02);
+      backface-visibility: hidden;
+      will-change: transform;
+      box-shadow: 0 1rem 3rem rgba(0,0,0,.75) !important;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card:hover .btn-outline-primary{
+      color:white;
+      background:#007bff;
+    }
+
+  </style>
+
+</head>
+
+<header th:insert="~{fragment/header.html :: header}" style="background-color:#F9C8CC "></header>
+<body>
+<div class="container-fluid" style="background: linear-gradient(90deg, #F9C8CC 0%, #FFE5E9 100%);">
+  <div class="container p-5">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card h-100 shadow-lg">
+          <i class="fa fa-book" style="font-size: 50px; align-self: center; padding-top: 20px"></i>
+          <div class="card-body">
+            <div class="text-center p-3">
+              <h5 class="card-title">MISSION</h5>
+            </div>
+            <p class="card-text">Our purpose is to help every family at each stage of care and today, we’re helping families at home and at work.
+              We’re using technology and innovation to solve one of the greatest human challenges.
+              We’re at the forefront of safety, advocacy and thought leadership.
+              We’re obsessively attuned to our customers’ needs because we ARE our customer.
+              We’re devoted to families of all types and backgrounds because we ARE families of all types and backgrounds.
+              We’re here for all your life, for all families, for all the reasons that matter.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card h-100 shadow-lg">
+          <i class="fa fa-globe" style="font-size: 50px; align-self: center; padding-top: 20px"></i>
+          <div class="card-body">
+            <div class="text-center p-3">
+              <h5 class="card-title">HOW IT WORKS FOR PARENTS?</h5>
+            </div>
+            <p class="card-text">Become a member and you can create and publish a profile online that describes your family, your job specifications and your ideal professional nanny. Looking for an after-school sitter or last-minute childcare? Post a babysitting job or nanny job on the NannyCity website and have the sitters come to you. Finding a nanny then simply requires your review of resumes from professional and dedicated nannies, who are interested in full-time, part-time, temporary, permanent and specific positions. Choose from current nanny profiles. We're happy to answer any questions you have along the way.
+              New nannies are being added every day!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card h-100 shadow-lg">
+          <i class="fa fa-pencil" style="font-size: 50px; align-self: center; padding-top: 20px"></i>
+          <div class="card-body">
+            <div class="text-center p-3">
+              <h5 class="card-title">HOW IT WORKS FOR NANNIES?</h5>
+            </div>
+            <p class="card-text">On NannyCity you will find thousands of jobs just for nannies.
+              NannyCity is a totally free service for nannies. Simply register for free.
+              Create your profile. Once you have registered you can create your free online profile. Once you have a profile you can apply for jobs and also parents who are searching can find you.
+              Finding a job that’s right for you! NannyCity features jobs from parents. You can search for jobs that ideally suit you and apply for them through the site. It’s important to search regularly as new jobs come on every day. We will help with your job search by emailing you everyday with jobs that suit you.
+              NannyCity website that brings together all the best jobs, from top nanny agencies and parents too. This is why the best nannies join our site in such large numbers.
+              Nannies/sitters is all we do, it’s our speciality</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+<footer th:insert="~{fragment/footer.html :: footer}"></footer>
+</body>
+</html>
