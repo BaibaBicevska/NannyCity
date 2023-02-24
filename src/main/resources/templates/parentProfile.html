@@ -119,7 +119,7 @@
                             <tr>
                                 <th width="30%">Working hours</th>
                                 <td width="2%">:</td>
-                                <td th:taxt="${pa.hours}"></td>
+                                <td th:text="${pa.hours}"></td>
                             </tr>
                             <tr>
                                 <th width="30%">Language</th>
@@ -127,12 +127,16 @@
                                 <td th:text="${pa.language}"/>
                             </tr>
                         </table>
+                        <div class="buttons">
+                            <a th:href="'/parentProfile/' + ${pa.id} + '/edit'" class="btn btn-primary" role="button">Update profile</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </body>
 <footer th:insert="~{fragment/footer.html :: footer}"></footer>
-</html>l>
+</html>

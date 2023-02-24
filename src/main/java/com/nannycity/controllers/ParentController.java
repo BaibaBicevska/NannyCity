@@ -122,4 +122,42 @@ public class ParentController {
         return "parentProfile";
     }
 
+    @GetMapping("parentProfile/{id}/edit")
+    public String editParentProfile(@PathVariable(value = "id") long id, Model model) {
+        Optional<ParentUser> parentUser = parentRepository.findById(id);
+        ArrayList<ParentUser> result = new ArrayList<>();
+        parentUser.ifPresent(result::add);
+        model.addAttribute("parentUser", result);
+        return "parentProfileEdit";
+    }
+
+    @PostMapping("parentProfile/{id}/edit")
+    public String nannyProfileUpdate(
+            @PathVariable(value = "id") long id,
+            @RequestParam String userName,
+            @RequestParam String userFullName,
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam String phone,
+            @RequestParam String location,
+            @RequestParam String address,
+            @RequestParam String[] hours,
+            @RequestParam String[] language,
+            @RequestParam String description,
+            Model model) {
+        ParentUser parentUser = parentRepository.findById(id).orElseThrow();
+        parentUser.setUserName(userName);
+        parentUser.setUserFullName(userFullName);
+        parentUser.setEmail(email);
+        parentUser.setPassword(password);
+        parentUser.setPhone(phone);
+        parentUser.setLocation(location);
+        parentUser.setAddress(address);
+        parentUser.setHours(String.join(",", hours));
+        parentUser.setLanguage(String.join(",", language));
+        parentUser.setDescription(description);
+        parentRepository.save(parentUser);
+        return "redirect:/parentProfile/{id}";
+    }
+
 }

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .btn {
+            background-color: #F9C8CC !important;
+        }
+
+        .modal-header, h4, .close {
+            background-color: #F9C8CC;
+            text-align: center;
+            font-size: 30px;
+            color: #fff !important;
+        }
+
+        .modal-footer {
+            background-color: #F9C8CC;
+        }
+
+        .checkboxes_registration {
+            display: flex;
+        }
+
+        .container {
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!--<div class="modal fade" id="Modal1" role="dialog">
+      <div class="modal-dialog">-->
+
+    <div class="modal-content">
+
+        <div class="modal-header" style="padding:35px 50px;">
+            <button type="button" class="close" data-dismiss="modal"></button>
+            <h4><span class="glyphicon glyphicon-lock"></span> Registration</h4>
+        </div>
+        <form method="post">
+
+            <!--            <div th:if="${#fields.hasAnyErrors()}">-->
+            <!--                <ul>-->
+            <!--                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}"/>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <div th:each="pa : ${parentUser}" class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="firstName"><span class="glyphicon glyphicon-user"></span> User Name</label>
+                        <input class="form-control" id="firstName" name="userName"
+                               placeholder="UserName" th:value="${pa.UserName}" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="userFullName"><span class="glyphicon glyphicon-user"></span> Full name</label>
+                        <input class="form-control" id="userFullName" minlength="4" name="userFullName"
+                               placeholder="Full name" required th:value="${pa.UserFullName}"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+                        <input class="form-control" id="email" name="email" placeholder="Enter email"
+                               required th:value="${pa.email}" type="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                        <input class="form-control" id="psw1" minlength="5" name="password" placeholder="Enter password"
+                               required th:value="${pa.password}" type="password">
+                        <!--          <br/>-->
+                        <!--          <input type="password" class="form-control" id="psw2" placeholder="Enter password again">-->
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber"><span class="glyphicon glyphicon-phone-alt"></span> Phone
+                            number</label>
+                        <input class="form-control" id="phoneNumber" maxlength="12" name="phone"
+                               placeholder="Enter your phone number" type="tel" th:value="${pa.phone}">
+                    </div>
+                    <div class="form-group">
+                        <label for="location"><span class="glyphicon glyphicon-location"></span> Location</label>
+                        <input class="form-control" id="location" minlength="3" name="location"
+                               placeholder="Enter your location" required th:value="${pa.location}"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="address"><span class="glyphicon glyphicon-home"></span> Address</label>
+                        <input class="form-control" id="address" minlength="3" name="address"
+                               placeholder="Enter your address" required th:value="${pa.address}" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="description"><span class="glyphicon glyphicon-picture"></span> Description </label>
+                        <textarea class="form-control" id="description" name="description"
+                                  placeholder="Enter information about you" type="text"
+                                  th:text="${pa.description}"> </textarea>
+                    </div>
+
+                    <div class="checkboxes_registration">
+                        <h5 style="margin-right:20px;">What languages do you speak? </h5>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="language1" name="language" type="checkbox"
+                                       value="english">
+                                <label class="form-check-label" for="language1">
+                                    English
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="language2" name="language" type="checkbox"
+                                       value="latvian">
+                                <label class="form-check-label" for="language2">
+                                    Latvian
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="language3" name="language" type="checkbox" value="">
+                                <label class="form-check-label" for="language3">
+                                    Lithuanian
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="language4" name="language" type="checkbox"
+                                       value="lithuanian">
+                                <label class="form-check-label" for="language4">
+                                    Russian
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="language5" name="language" type="checkbox"
+                                       value="german">
+                                <label class="form-check-label" for="language5">
+                                    German
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="language6" name="language" type="checkbox"
+                                       value="other">
+                                <label class="form-check-label" for="language6">
+                                    other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkboxes_registration">
+                        <h5 style="margin-right:20px;">When do you need nanny?</h5>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="hours1" name="hours" type="checkbox"
+                                       value="full-time">
+                                <label class="form-check-label" for="hours1">
+                                    Full-time
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="hours2" name="hours" type="checkbox"
+                                       value="night hours">
+                                <label class="form-check-label" for="hours2">
+                                    Night hours
+                                </label>
+                            </div>
+                            <div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="hours3" name="hours" type="checkbox"
+                                           value="evening hours">
+                                    <label class="form-check-label" for="hours3">
+                                        Evening hours
+                                    </label>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <input class="form-check-input" id="hours4" name="hours" type="checkbox"
+                                           value="day hours">
+                                    <label class="form-check-label" for="hours4">
+                                        Day hours
+                                    </label>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+
+
+            <button class="btn btn-success btn-block" type="submit"><span class="glyphicon glyphicon-off"></span>
+                Upgrade for parent Profile</a></button>
+        </form>
+            </div>
+        </form>
+        <br>
+        <div>
+            <br>
+        </div>
+        <div class="modal-footer">
+            <div>
+                <a href="/" class="btn btn-success btn-default pull-left">Cancel</a>
+
+                <p>Do you have an account? <a href="parentLogin">Log in for parents</a></p>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--</div>
+</div>-->
+
+</body>
+</html>

@@ -14,14 +14,15 @@
         <div class="left">
             <div>
                 <nav class="header__nav">
-                    <a href="/static" class="header__links">Main menu</a>
-                    <a href="/static" class="header__links">Our services</a>
+                    <a href="/" class="header__links">Main menu</a>
+                    <a href="/about_us" class="header__links">Our services</a>
                     <a href="/allNannies" class="header__links">Nannies</a>
                     <a href="/FAQ1" class="header__links">FAQ</a>
                     <a href="login" class="header__links">Log in for nannies</a>
                     <a href="parentLogin" class="header__links">Log in for parents</a>
                 </nav>
             </div>
+
             <div>
 
                 <ul style="color: #57180A;">
@@ -53,17 +54,15 @@
                         we'll be in touch soon.
                     </li>
                     <br>
-                    <h3 style="color:tomato;">Thank you, for your question, we will reply as soon as possible :) </h3>
+                    <h3 style="color:tomato;">Thank you, for your question, we will reply to your email as soon as possible :) </h3>
                 </ul>
             </div>
             <div>
                 <div th:each="qu : ${questions}">
+
                     <div>
-                        <img src="static/images/baby.jpeg">
-                    </div>
-                    <div>
-                        <p><b>question:</b> <span th:text="${qu.question()}"/></p>
-                        <p><b>UserName:</b> <span th:text="${qu.person()}"/></p>
+                        <p><b>question:</b> <span th:text="${qu.question}"/></p>
+                        <p><b>UserName:</b> <span th:text="${qu.person}"/></p>
                     </div>
                 </div>
             </div>

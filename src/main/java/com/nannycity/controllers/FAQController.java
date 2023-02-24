@@ -41,6 +41,7 @@ public class FAQController {
         }
     }
 
+
     @GetMapping("/FAQ1")
     public String basicFAQ() {
 
