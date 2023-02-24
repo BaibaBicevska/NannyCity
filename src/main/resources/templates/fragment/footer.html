@@ -1,115 +1,115 @@
 <div th:fragment="footer">
-  <style>
-    iframe {
-      width: 100%;
-      height: 360px;
-    }
+    <style>
+        iframe {
+            width: 100%;
+            height: 360px;
+        }
 
-    .footer {
-      background-color: white;
-    }
+        .footer {
+            background-color: white;
+        }
 
-    .footer__all {
-      padding-top: 70px;
-    }
+        .footer__all {
+            padding-top: 70px;
+        }
 
-    .footer__col_title {
-      font-family: Inter;
-      font-weight: bolder;
-      font-size: 22px;
-      line-height: 20px;
-      color: black;
-      padding-left: 15px;
-    }
+        .footer__col_title {
+            font-family: Inter;
+            font-weight: bolder;
+            font-size: 22px;
+            line-height: 20px;
+            color: black;
+            padding-left: 15px;
+        }
 
-    .footer__col_link {
-      font-family: Inter;
-      font-size: 18px;
-      line-height: 17px;
-      color: black;
-    }
+        .footer__col_link {
+            font-family: Inter;
+            font-size: 18px;
+            line-height: 17px;
+            color: black;
+        }
 
-    .footer__col_rights {
-      font-family: Inter;
-      font-size: 18px;
-      line-height: 17px;
-      color: black;
-      padding-bottom: 40px;
-      padding-top: 40px;
-    }
+        .footer__col_rights {
+            font-family: Inter;
+            font-size: 18px;
+            line-height: 17px;
+            color: black;
+            padding-bottom: 40px;
+            padding-top: 40px;
+        }
 
-    .footer__col_up {
-      font-family: Inter;
-      font-size: 14px;
-      line-height: 17px;
-      color: black;
-      transform: rotate(-90deg);
-    }
-  </style>
-<footer class="footer">
-  <div class="container footer">
-    <div class="footer__all">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 footer__col footer__col_logo">
-          <img src="/images/logo.png" alt="logo">
+        .footer__col_up {
+            font-family: Inter;
+            font-size: 14px;
+            line-height: 17px;
+            color: black;
+            transform: rotate(-90deg);
+        }
+    </style>
+
+    <footer class="footer">
+        <div class="container footer">
+            <div class="footer__all">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer__col footer__col_logo">
+                        <img src="/images/logo.png" alt="logo">
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer__col">
+                        <h5 class="footer__col_title">Site map</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link active" aria-current="page"
+                                   href="/">Main menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link" href="/index.html">Our services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link" href="/allNannies.html">Nannies</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link" href="/about/about.html">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link" href="/contacts.html">Contacts</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer__col">
+                        <h5 class="footer__col_title">Contact us</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link active" aria-current="page"
+                                   href="tel:+37121232523">+37126262626</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link" href="tel:+37122222222">+37122222222</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link" href="mailto:nanniescity@gmail.com">nanniescity@gmail.com</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link footer__col_link" href="#">
+                                    <img src="/images/footer-logo-fb.svg" alt="fb">
+                                    <img src="/images/footer-logo-google.svg" alt="google">
+                                    <img src="/images/footer-logo-fb.svg" alt="fb">
+                                    <img src="/images/footer-logo-google.svg" alt="google">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col footer__col"></div>
+                    <div class="col footer__col"></div>
+                    <div class="col footer__col_and">
+                        <a class="nav-link footer__col_link" href="/">
+                            <img class="footer__col_arrows" src="/images/footer-arrows.png" alt="arrows">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col footer__col_rights">All rights are reserved</div>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-3 col-md-6 footer__col">
-          <h5 class="footer__col_title">Site map</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link footer__col_link active" aria-current="page"
-                 href="/">Main menu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link footer__col_link" href="/index.html">Our services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link footer__col_link" href="/allNannies.html">Nannies</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link footer__col_link" href="/about/about.html">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link footer__col_link" href="/contacts.html">Contacts</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer__col">
-          <h5 class="footer__col_title">Contact us</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link footer__col_link active" aria-current="page"
-                 href="tel:+37121232523">+37126262626</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link footer__col_link" href="tel:+37122222222">+37122222222</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link footer__col_link" href="mailto:nanniescity@gmail.com">nanniescity@gmail.com</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link footer__col_link" href="#">
-                <img src="/images/footer-logo-fb.svg" alt="fb">
-                <img src="/images/footer-logo-google.svg" alt="google">
-                <img src="/images/footer-logo-fb.svg" alt="fb">
-                <img src="/images/footer-logo-google.svg" alt="google">
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col footer__col"></div>
-        <div class="col footer__col"></div>
-        <div class="col footer__col_and">
-          <a class="nav-link footer__col_link" href="/">
-            <img class="footer__col_arrows" src="/images/footer-arrows.png" alt="arrows">
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col footer__col_rights">All rights are reserved</div>
-      </div>
-    </div>
-
-  </div>
-</footer>
+    </footer>
 </div>
