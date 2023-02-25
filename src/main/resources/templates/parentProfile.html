@@ -91,7 +91,7 @@
 </head>
 <header th:insert="~{fragment/header.html :: header}"></header>
 <body>
-
+<div>
 <div class="student-profile py-4">
     <div class="container">
         <div class="row" th:each="pa : ${parentUser}">
@@ -105,7 +105,7 @@
                         <p><b>Email:</b> <span th:text="${pa.email}"></span></p>
                         <p ><b>Phone number:</b> <span th:text="${pa.phone}"></span></p>
                         <p ><b>Location</b><span th:text="${pa.location}" ></span> </p>
-                        <p ><b>Description:</b> <span th:text="${pa.description}"></span></p>
+<!--                        <p ><b>Description:</b> <span th:text="${pa.description}"></span></p>-->
                     </div>
                 </div>
             </div>
@@ -132,10 +132,22 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <div>
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Our needs!!!</h3>
+                            <div class="card-body pt-0">
+                                <td th:text="${pa.description}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
+</div>
 </div>
 </body>
 <footer th:insert="~{fragment/footer.html :: footer}"></footer>
