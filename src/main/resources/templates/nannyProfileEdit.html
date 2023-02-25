@@ -35,251 +35,266 @@
 <div class="container">
     <!--<h2>Do you want to register?</h2>
     <button type="button" class="btn btn-default btn-lg" id="Btn1">Registration</button>
+    <div class="modal fade" id="Modal1" role="dialog">-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <a href="/login" class="close">&times;</a>
+                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                <h4><span class="glyphicon glyphicon-lock"></span> Profile update </h4>
+            </div>
+            <form method="post">
+                <div th:each="el : ${nannyUser}" class="modal-body" style="padding:40px 50px;">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="firstName"><span class="glyphicon glyphicon-user"></span> Username</label>
+                            <input th:value="${el.userName}" name="userName" type="text" class="form-control"
+                                   id="firstName"
+                                   placeholder="First name">
+                            <!--<div class="alert alert-warning" th:if="${#fields.hasErrors('userName')}" th:errors="*{nannyUser.username}"></div>-->
+                        </div>
+                        <div class="form-group">
+                            <label for="userFullName"><span class="glyphicon glyphicon-user"></span> Full
+                                name</label>
+                            <input th:value="${el.userFullName}" name="userFullName" type="text"
+                                   class="form-control"
+                                   id="userFullName" placeholder="User full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+                            <input th:value="${el.email}" name="email" type="email" class="form-control" id="email"
+                                   placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                            <input th:value="${el.password}" name="password" type="password" class="form-control"
+                                   id="psw1"
+                                   placeholder="Enter password">
+                            <!--<br/>
+                            <input th:value="${el.password}" type="password" class="form-control" id="psw2"
+                                   placeholder="Enter password again">-->
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate"><span class="glyphicon glyphicon-calendar"></span> Birth
+                                date</label>
+                            <input th:value="${el.birthDay}" name="birthDay" type="date" class="form-control"
+                                   id="birthDate">
+                            <!--<p th:if="${#fields.hasErrors('age')}">Invalid Age</p>-->
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber"><span class="glyphicon glyphicon-phone-alt"></span> Phone
+                                number</label>
+                            <input th:value="${el.phone}" name="phone" type="number" class="form-control"
+                                   id="phoneNumber"
+                                   placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="location"><span class="glyphicon glyphicon-location"></span>
+                                Location</label>
+                            <input th:value="${el.location}" name="location" type="text" class="form-control"
+                                   id="location"
+                                   placeholder="Enter your location">
+                        </div>
+                        <div class="form-group">
+                            <label for="address"><span class="glyphicon glyphicon-home"></span> Address</label>
+                            <input th:value="${el.address}" name="address" type="text" class="form-control"
+                                   id="address"
+                                   placeholder="Enter your address">
+                        </div>
+                        <div class="form-group">
+                            <label for="photo"><span class="glyphicon glyphicon-picture"></span> Load your
+                                photo</label>
+                            <input th:value="${el.getProfilePicture()}" name="profilePicture" type="#"
+                                   class="form-control" id="photo"
+                                   placeholder="Load your photo">
+                        </div>
 
-    <div class="modal fade" id="Modal1" role="dialog">
-      <div class="modal-dialog">-->
+                        <div class="checkboxes_registration">
+                            <h5 style="margin-right:20px;">Working hours</h5>
+                            <div>
+                                <div class="form-check">
+                                    <input name="hours" class="form-check-input" type="checkbox" value="full-time"
+                                           id="hours1">
+                                    <label class="form-check-label" for="check1">
+                                        Full-time
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="hours" class="form-check-input" type="checkbox" value="night hours"
+                                           id="hours2">
+                                    <label class="form-check-label" for="check2">
+                                        Night hours
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="hours" class="form-check-input" type="checkbox"
+                                           value="evening hours"
+                                           id="hours3">
+                                    <label class="form-check-label" for="check3">
+                                        Evening hours
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-check">
+                                    <input name="hours" class="form-check-input" type="checkbox" value="day hours"
+                                           id="hours4">
+                                    <label class="form-check-label" for="check4">
+                                        Day hours
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="modal-content">
-        <div class="modal-header" style="padding:35px 50px;">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4><span class="glyphicon glyphicon-lock"></span> Profile update </h4>
+                        <div class="checkboxes_registration">
+                            <h5 style="margin-right:20px;">Additional skills</h5>
+                            <div>
+                                <div class="form-check">
+                                    <input name="skills" class="form-check-input" type="checkbox" value="driving"
+                                           id="check1">
+                                    <label class="form-check-label" for="check1">
+                                        Driving
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="skills" class="form-check-input" type="checkbox" value="cooking"
+                                           id="check2">
+                                    <label class="form-check-label" for="check2">
+                                        Cooking
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="skills" class="form-check-input" type="checkbox"
+                                           value="house cleaning"
+                                           id="check3">
+                                    <label class="form-check-label" for="check3">
+                                        House cleaning
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-check">
+                                    <input name="skills" class="form-check-input" type="checkbox" value="ironing"
+                                           id="check4">
+                                    <label class="form-check-label" for="check4">
+                                        Ironing
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="skills" class="form-check-input" type="checkbox"
+                                           value="house cleaning"
+                                           id="check5">
+                                    <label class="form-check-label" for="check5">
+                                        House cleaning
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="skills" class="form-check-input" type="checkbox" value="shopping"
+                                           id="check6">
+                                    <label class="form-check-label" for="check6">
+                                        Shopping
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="education"><span class="glyphicon glyphicon-education"></span> Education
+                            </label>
+                            <input th:value="${el.education}" name="education" type="text" class="form-control"
+                                   id="education" placeholder="Enter your education and certificates">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experience"><span class="glyphicon glyphicon-certificate"></span> Experience
+                            </label>
+                            <input th:value="${el.experience}" name="experience" type="text" class="form-control"
+                                   id="experience" placeholder="Enter your experience">
+                        </div>
+
+                        <div class="checkboxes_registration">
+                            <h5 style="margin-right:20px;">What languages do you speak? </h5>
+                            <div>
+                                <div class="form-check">
+                                    <input name="language" class="form-check-input" type="checkbox" value="english"
+                                           id="language1">
+                                    <label class="form-check-label" for="check1">
+                                        English
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="language" class="form-check-input" type="checkbox" value="latvian"
+                                           id="language2">
+                                    <label class="form-check-label" for="check2">
+                                        Latvian
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="language" class="form-check-input" type="checkbox"
+                                           value="lithuanian"
+                                           id="language3">
+                                    <label class="form-check-label" for="check3">
+                                        Lithuanian
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-check">
+                                    <input name="language" class="form-check-input" type="checkbox" value="russian"
+                                           id="language4">
+                                    <label class="form-check-label" for="check4">
+                                        Russian
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="language" class="form-check-input" type="checkbox" value="german"
+                                           id="language5">
+                                    <label class="form-check-label" for="check5">
+                                        German
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="language" class="form-check-input" type="checkbox" value="other"
+                                           id="language6">
+                                    <label class="form-check-label" for="check6">
+                                        other
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description"><span class="glyphicon glyphicon-picture"></span> Description
+                            </label>
+                            <textarea th:text="${el.description}" name="description" type="comment"
+                                      class="form-control"
+                                      id="description" placeholder="Enter information about you"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block"><span
+                                class="glyphicon glyphicon-off"></span> Update profile information
+                        </button>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="/" class="btn btn-success btn-default pull-left">Cancel</a>
+                    <!--<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span
+                            class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>-->
+                    <p>Do you have an account? <a href="/login">Log in</a></p>
+                </div>
         </div>
-        <form method="post">
-            <div th:each="el : ${nannyUser}" class="modal-body" style="padding:40px 50px;">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="firstName"><span class="glyphicon glyphicon-user"></span> Username</label>
-                        <input th:value="${el.userName}" name="userName" type="text" class="form-control" id="firstName"
-                               placeholder="First name">
-                        <!--<div class="alert alert-warning" th:if="${#fields.hasErrors('userName')}" th:errors="*{nannyUser.username}"></div>-->
-                    </div>
-                    <div class="form-group">
-                        <label for="userFullName"><span class="glyphicon glyphicon-user"></span> Full name</label>
-                        <input th:value="${el.userFullName}" name="userFullName" type="text" class="form-control"
-                               id="userFullName" placeholder="User full name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
-                        <input th:value="${el.email}" name="email" type="email" class="form-control" id="email"
-                               placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="psw1"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                        <input th:value="${el.password}" name="password" type="password" class="form-control" id="psw1"
-                               placeholder="Enter password">
-                        <!--<br/>
-                        <input th:value="${el.password}" type="password" class="form-control" id="psw2"
-                               placeholder="Enter password again">-->
-                    </div>
-                    <div class="form-group">
-                        <label for="birthDate"><span class="glyphicon glyphicon-calendar"></span> Birth date</label>
-                        <input th:value="${el.birthDay}" name="birthDay" type="date" class="form-control"
-                               id="birthDate">
-                        <!--<p th:if="${#fields.hasErrors('age')}">Invalid Age</p>-->
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber"><span class="glyphicon glyphicon-phone-alt"></span> Phone
-                            number</label>
-                        <input th:value="${el.phone}" name="phone" type="number" class="form-control" id="phoneNumber"
-                               placeholder="Enter your phone number">
-                    </div>
-                    <div class="form-group">
-                        <label for="location"><span class="glyphicon glyphicon-location"></span> Location</label>
-                        <input th:value="${el.location}" name="location" type="text" class="form-control" id="location"
-                               placeholder="Enter your location">
-                    </div>
-                    <div class="form-group">
-                        <label for="address"><span class="glyphicon glyphicon-home"></span> Address</label>
-                        <input th:value="${el.address}" name="address" type="text" class="form-control" id="address"
-                               placeholder="Enter your address">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo"><span class="glyphicon glyphicon-picture"></span> Load your photo</label>
-                        <input name="profilePicture" type="#" class="form-control" id="photo"
-                               placeholder="Load your photo">
-                    </div>
 
-                    <div class="checkboxes_registration">
-                        <h5 style="margin-right:20px;">Working hours</h5>
-                        <div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="full-time"
-                                       id="hours1">
-                                <label class="form-check-label" for="check1">
-                                    Full-time
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="night hours"
-                                       id="hours2">
-                                <label class="form-check-label" for="check2">
-                                    Night hours
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="evening hours"
-                                       id="hours3">
-                                <label class="form-check-label" for="check3">
-                                    Evening hours
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-check">
-                                <input name="hours" class="form-check-input" type="checkbox" value="day hours"
-                                       id="hours4">
-                                <label class="form-check-label" for="check4">
-                                    Day hours
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+    <!--</div>
+    </div>-->
 
-                    <div class="checkboxes_registration">
-                        <h5 style="margin-right:20px;">Additional skills</h5>
-                        <div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="driving"
-                                       id="check1">
-                                <label class="form-check-label" for="check1">
-                                    Driving
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="cooking"
-                                       id="check2">
-                                <label class="form-check-label" for="check2">
-                                    Cooking
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="house cleaning"
-                                       id="check3">
-                                <label class="form-check-label" for="check3">
-                                    House cleaning
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="ironing"
-                                       id="check4">
-                                <label class="form-check-label" for="check4">
-                                    Ironing
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="house cleaning"
-                                       id="check5">
-                                <label class="form-check-label" for="check5">
-                                    House cleaning
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="skills" class="form-check-input" type="checkbox" value="shopping"
-                                       id="check6">
-                                <label class="form-check-label" for="check6">
-                                    Shopping
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="education"><span class="glyphicon glyphicon-education"></span> Education
-                        </label>
-                        <input th:value="${el.education}" name="education" type="text" class="form-control"
-                               id="education" placeholder="Enter your education and certificates">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="experience"><span class="glyphicon glyphicon-certificate"></span> Experience
-                        </label>
-                        <input th:value="${el.experience}" name="experience" type="text" class="form-control"
-                               id="experience" placeholder="Enter your experience">
-                    </div>
-
-                    <div class="checkboxes_registration">
-                        <h5 style="margin-right:20px;">What languages do you speak? </h5>
-                        <div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="english"
-                                       id="language1">
-                                <label class="form-check-label" for="check1">
-                                    English
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="latvian"
-                                       id="language2">
-                                <label class="form-check-label" for="check2">
-                                    Latvian
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="lithuanian"
-                                       id="language3">
-                                <label class="form-check-label" for="check3">
-                                    Lithuanian
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="russian"
-                                       id="language4">
-                                <label class="form-check-label" for="check4">
-                                    Russian
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="german"
-                                       id="language5">
-                                <label class="form-check-label" for="check5">
-                                    German
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="language" class="form-check-input" type="checkbox" value="other"
-                                       id="language6">
-                                <label class="form-check-label" for="check6">
-                                    other
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="description"><span class="glyphicon glyphicon-picture"></span> Description
-                        </label>
-                        <textarea th:text="${el.description}" name="description" type="comment" class="form-control"
-                                  id="description" placeholder="Enter information about you"/>
-                    </div>
-
-                    <button type="submit" class="btn btn-success btn-block"><span
-                            class="glyphicon glyphicon-off"></span> Update profile information
-                    </button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span
-                        class="glyphicon glyphicon-remove"></span> Cancel
-                </button>
-                <p>Do you have an account? <a href="/login">Log in</a></p>
-            </div>
-
-    </div>
-    </form>
-</div>
-<!--</div>
-</div>-->
-
-<script>
-    $(document).ready(function () {
-        $("#Btn1").click(function () {
-            $("#Modal1").modal();
+    <script>
+        $(document).ready(function () {
+            $("#Btn1").click(function () {
+                $("#Modal1").modal();
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>

@@ -44,18 +44,18 @@ public class ParentUser {
     @UpdateTimestamp
     private Timestamp updatedAt;
 
-//    public ParentUser(String userName, String userFullName, String email, String password, String phone, String location, String address, String description, String hours, String language) {
-//
-//        this.userName = userName;
-//        this.userFullName = userFullName;
-//        this.email = email;
-//        this.password = password;
-//        this.phone = phone;
-//        this.location = location;
-//        this.address = address;
-//        this.description = description;
-//        this.hours = hours;
-//        this.language = language;
-//
-//    }
+
+    public ParentUser(String userName, String userFullName, String email, String password, String phone, String location, String address, String description, String hours, String language) {
+        this.userName = userName;
+        this.userFullName = userFullName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.location = location;
+        this.address = address;
+        this.description = description;
+        this.hours = hours;
+        this.language = language;
+
+    }
 }

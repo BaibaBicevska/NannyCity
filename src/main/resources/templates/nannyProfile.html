@@ -52,12 +52,12 @@
     }
 
     .buttons {
-      padding-left: 100px;
+      padding-left: 30px;
       display: flex;
       margin-bottom: 50px;
     }
     .btn {
-      padding:15px 70px;
+      padding:15px 50px;
       margin-right: 20px;
       margin-top: 20px;
       background-color: #F9C8CC;
@@ -138,6 +138,7 @@
             <form th:action="'/nannyProfile/' + ${id} + '/remove'" method="post">
               <button class="btn btn-light" type="submit" >Delete profile</button>
             </form>
+            <a th:href="'/nannyProfile/' + ${el.id} + '/chat'" class="btn btn-light" role="button">Nannies chat</a>
           </div>
         </div>
 

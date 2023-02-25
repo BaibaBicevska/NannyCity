@@ -19,7 +19,7 @@ public class ChatController {
         this.userService = userService;
         this.chatService = chatService;
     }
-    @GetMapping("allNannies/{userId}/chat")
+    @GetMapping("nannyProfile/{userId}/chat")
     public String displayChatRoom(@PathVariable Long userId, Model model,
                                   @CookieValue(value = "userId") String userIdFromCookie){
         try {
@@ -31,7 +31,7 @@ public class ChatController {
         }
     }
 
-    @PostMapping("allNannies/{userId}/chat")
+    @PostMapping("nannyProfile/{userId}/chat")
     public String sendChat(@PathVariable Long userId, Chat chat, Model model){
         try {
 
@@ -47,6 +47,4 @@ public class ChatController {
             return "redirect:/groupchat" + "?message=send_chat_failed";
         }
     }
-
-
 }

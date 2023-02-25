@@ -1,17 +1,11 @@
 package com.nannycity.controllers;
 
-import com.nannycity.entities.NannyUser;
 import com.nannycity.entities.ParentUser;
-import com.nannycity.repositories.NannyRepository;
 import com.nannycity.repositories.ParentRepository;
 import com.nannycity.services.ParentService;
-import com.nannycity.services.UserService;
-import jakarta.persistence.Column;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -43,9 +36,9 @@ public class ParentController {
     @GetMapping("/parentLogin")
     public String showParentLogin(
 
-        @RequestParam(name="message", required = false) String message,
-        Model model) {
-            model.addAttribute("message", message);
+            @RequestParam(name="message", required = false) String message,
+            Model model) {
+        model.addAttribute("message", message);
         return "parentLogin";
     }
 

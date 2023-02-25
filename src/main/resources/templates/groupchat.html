@@ -26,9 +26,14 @@
             box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
         }
 
+        header {
+            background: linear-gradient(to bottom right, rgba(252, 203, 144, 1), rgba(213, 126, 235, 1));
+        }
+
     </style>
 </head>
 <body>
+<header th:insert="~{fragment/header.html :: header}"></header>
 <main>
 
 
@@ -103,7 +108,7 @@
                                  class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
                         </li>-->
 
-                        <form method="post" th:action="${'/allNannies/'+ nannyUser.getId() + '/chat'}">
+                        <form method="post" th:action="${'/nannyProfile/'+ nannyUser.getId() + '/chat'}">
                             <div class="form-outline form-white">
                                 <textarea class="form-control" id="textAreaExample" rows="4" name="message"></textarea>
                                 <input type="hidden" th:value="${nannyUser.getId()}" name="nannyUser">

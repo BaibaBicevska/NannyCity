@@ -1,7 +1,6 @@
 package com.nannycity.services;
 
 import com.nannycity.entities.ParentUser;
-import com.nannycity.repositories.NannyRepository;
 import com.nannycity.repositories.ParentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
