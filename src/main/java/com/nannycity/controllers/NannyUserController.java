@@ -184,5 +184,10 @@ public class NannyUserController {
     public String showAboutUsPage(Model model) {
         return "about_us";
     }
+
+    @GetMapping("/offers")
+    public String showOfferPage(Model model) {
+        return "offers";
+    }
 }
 
